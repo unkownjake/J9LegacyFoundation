@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 255, 140, 0;
+  --primary-light: 255, 179, 71;
+  --primary-dark: 204, 112, 0;
+  --complementary: 0, 102, 204;
+  --background: 245, 245, 245;
+  --foreground: 51, 51, 51;
+}
+
+body {
+  color: rgb(var(--foreground));
+  background: rgb(var(--background));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(var(--primary-dark));
+}
+
+a {
+  color: rgb(var(--complementary));
+}
+
+a:hover {
+  color: rgb(var(--primary));
+}
+
