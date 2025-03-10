@@ -48,20 +48,23 @@ export default function Home() {
     {
       title: "About Us",
       description: "Learn about our mission and the impact we're making in the community.",
-      icon: <Info className="h-8 w-8" />,
+      icon: <Info className="h-6 w-6" />,
       link: "/about",
+      image: "/founders.JPG",
     },
     {
       title: "Our Events",
       description: "Discover upcoming events and how you can get involved.",
-      icon: <Calendar className="h-8 w-8" />,
+      icon: <Calendar className="h-6 w-6" />,
       link: "/events",
+      image: "/camp.JPG",
     },
     {
       title: "Support Our Cause",
       description: "Find out how you can contribute to our mission and make a difference.",
-      icon: <Heart className="h-8 w-8" />,
+      icon: <Heart className="h-6 w-6" />,
       link: "/donate",
+      image: "/team.JPG",
     },
   ]
 
@@ -69,28 +72,13 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-grow">
-        <section className="container mx-auto px-4 py-12 md:py-24 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-8 md:mb-0">
+        <section className="bg-gray-100 py-16">
+          <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-orange-700">Welcome to J9 Legacy Foundation</h1>
             <p className="text-lg text-gray-700 mb-6">
               Empowering youth and families to attend camps through community events that support access to educational
               and recreational opportunities.
             </p>
-          </div>
-          <div className="md:w-1/2">
-            <Image
-              src="/placeholder.svg?height=400&width=600"
-              alt="J9 Legacy Foundation"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-lg"
-            />
-          </div>
-        </section>
-
-        <section className="bg-gray-100 py-16">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-10 text-center text-orange-700">Explore J9 Legacy Foundation</h2>
             {isMobile ? (
               <div>
                 <Slider ref={sliderRef} {...carouselSettings}>
@@ -120,16 +108,24 @@ export default function Home() {
   )
 }
 
-function QuickLinkCard({ title, description, icon, link }) {
+function QuickLinkCard({ title, description, icon, link, image }) {
   return (
-    <Link href={link} className="block">
-      <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-        <div className="text-orange-500 mb-4">{icon}</div>
-        <h3 className="text-xl font-semibold mb-2 text-orange-700">{title}</h3>
-        <p className="text-gray-600 mb-4 flex-grow">{description}</p>
-        <span className="text-orange-500 font-semibold">Learn More &rarr;</span>
+    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col text-left">
+      <div className="relative h-48 w-full">
+        <Image src={image} alt={title} fill className="object-cover" />
       </div>
-    </Link>
+      <div className="p-6 flex flex-col flex-grow justify-between">
+        <div>
+          <div className="flex items-center mb-3">
+            <div className="text-orange-500 mr-3 flex-shrink-0">{icon}</div>
+            <h3 className="text-xl font-semibold text-orange-700">{title}</h3>
+          </div>
+          <p className="text-gray-600 mb-4">{description}</p>
+        </div>
+        <Link href={link} className="block">
+          <span className="text-orange-500 font-semibold">Learn More &rarr;</span>
+        </Link>
+      </div>
+    </div>
   )
 }
-

@@ -32,7 +32,7 @@ export default function AboutPage() {
           </div>
           <div className="md:w-1/2">
             <Image
-              src="/placeholder.svg?height=400&width=600"
+              src= "/j9.png"
               alt="J9 Legacy Foundation Team"
               width={600}
               height={400}

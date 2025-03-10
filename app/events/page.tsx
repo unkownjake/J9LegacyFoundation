@@ -17,7 +17,7 @@ export default function EventsPage() {
     address: "6210 200TH ST SW Lynwood, WA 98036",
     description:
       "Join us for a fun-filled evening of skating!",
-    imageUrl: "/placeholder.svg?height=300&width=500", // Replace with actual image URL
+    imageUrl: "/rollerskates.jpg",
     additionalInfo:
       "All ages welcome. Ticket price includes skate rental. Snacks and drinks will be available for purchase. Don't forget to bring socks!",
   }
@@ -45,7 +45,7 @@ function EventCard({ event, onClick }) {
       onClick={onClick}
     >
       <Image
-        src={event.imageUrl || "/placeholder.svg"}
+        src={event.imageUrl}
         alt={event.title}
         width={500}
         height={300}
