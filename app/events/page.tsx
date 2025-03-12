@@ -19,7 +19,8 @@ export default function EventsPage() {
       "Join us for a fun-filled evening of skating!",
     imageUrl: "/rollerskates.jpg",
     additionalInfo:
-      "All ages welcome. Ticket price includes skate rental. Snacks and drinks will be available for purchase. Don't forget to bring socks!",
+      "All ages welcome. Ticket purchases will be made at the venue but please fill out the form bellow for us to get a gauge for the number of attendees.",
+    src: "https://forms.gle/KdRtoad9YsEibRNG6"
   }
 
   return (
@@ -113,10 +114,12 @@ function Modal({ event, onClose }) {
           <p className="text-gray-700 mb-4">{event.description}</p>
           <h3 className="text-xl font-semibold mb-2 text-orange-600">Additional Information</h3>
           <p className="text-gray-700 mb-6">{event.additionalInfo}</p>
-          <div className="flex justify-center">
-            <button className="bg-orange-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-600 transition duration-300">
-              Register Now
-            </button>
+          <div className="flex justify-center h-full">
+            <iframe
+              src={event.src}
+              className="w-full h-screen border-none"
+              title={event.title + "RSVP Form"}
+            />
           </div>
         </div>
       </div>
