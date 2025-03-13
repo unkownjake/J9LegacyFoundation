@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="flex-1 flex items-center justify-center md:justify-center">
             <Link
               href="/donate"
-              className="bg-white text-accent px-6 py-2 rounded-lg font-semibold hover:bg-primary-darker transition duration-300 inline-block"
+              className="bg-white text-accent px-6 py-2 rounded-lg font-semibold hover:bg-primary transition duration-300 inline-block"
             >
               Donate Now
             </Link>

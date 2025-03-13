@@ -35,23 +35,28 @@ export default function EventsPage() {
     imageUrl: "/3by.JPG",
     additionalInfo:
       "The foundation hosted a 3 by jamboree on Saturday November 30th, 2024, in honor of Jacob Eshenbaugh, who passed away on May 23, 2024.",
-    src: "https://drive.google.com/drive/folders/1JUiGQdtvx7Wwz__n-b51-E1xtgSJRhhc?usp=sharing"
-  }
+    src: "https://drive.google.com/drive/folders/1JUiGQdtvx7Wwz__n-b51-E1xtgSJRhhc?usp=sharing",
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
-      <section className="mb-16">
-      <h1 className="text-4xl font-bold mb-6 text-primary">Upcoming Events</h1>
-      <p className="text-lg text-accent mb-16">
-          Join us in our mission to empower youth and families. Check out our upcoming events and get involved!
-        </p>
-        <EventCard event={event} onClick={() => setIsModalOpen(true)} />
-        {isModalOpen && <Modal event={event} onClose={() => setIsModalOpen(false)} />}
-      </section>
+        <section className="mb-16">
+          <h1 className="text-4xl font-bold mb-6 text-primary">
+            Upcoming Events
+          </h1>
+          <p className="text-lg text-accent mb-16">
+            Join us in our mission to empower youth and families. Check out our
+            upcoming events and get involved!
+          </p>
+          <EventCard event={event} onClick={() => setIsModalOpen(true)} />
+          {isModalOpen && (
+            <Modal event={event} onClose={() => setIsModalOpen(false)} />
+          )}
+        </section>
 
-      {/* <section className="mb-16">
+        {/* <section className="mb-16">
         <h2 className="text-3xl font-bold mb-6 text-orange-700">Past Events</h2>
         <p className="text-lg text-gray-700 mb-8">
           Take a look at some of our previous events and the impact we've made in our community.
@@ -59,66 +64,11 @@ export default function EventsPage() {
         <EventCard event={pastEvent} onClick={() => setIsModalOpen(true)} />
             {isModalOpen && <Modal event={pastEvent} onClose={() => setIsModalOpen(false)} />}
       </section> */}
-
       </main>
       <Footer />
     </div>
   );
 }
-// function EventCard({ event }) {
-//   const [isExpanded, setIsExpanded] = useState(false);
-
-//   const toggleExpand = () => {
-//     setIsExpanded((prev) => !prev);
-//   };
-
-//   return (
-//     <div className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 max-w-2xl mx-auto cursor-pointer">
-//       <Image
-//         src={event.imageUrl}
-//         alt={event.title}
-//         width={500}
-//         height={300}
-//         className="w-full h-64 object-cover"
-//       />
-//       <div className="p-6">
-//         <h2 className="text-3xl font-semibold mb-4 text-primary-darker">
-//           {event.title}
-//         </h2>
-//         <div className="flex items-center text-accent mb-2">
-//           <Calendar className="h-5 w-5 mr-2 text-primary" />
-//           <span>{event.date}</span>
-//         </div>
-//         <div className="flex items-center text-accent mb-2">
-//           <Clock className="h-5 w-5 mr-2 text-primary" />
-//           <span>{event.time}</span>
-//         </div>
-//         <div className="flex items-center text-accent mb-4">
-//           <MapPin className="h-5 w-5 mr-2 text-primary" />
-//           <span>{event.location}</span>
-//         </div>
-//         <p className="text-gray-700 mb-6">{event.description}</p>
-//         <Collapsible open={isExpanded}>
-//           <Collapsible.Content>
-//             {/* Additional content */}
-//             <div className="mt-4 p-4 border-t border-gray-200">
-//               <p className="text-gray-800">{event.additionalInfo}</p>
-//             </div>
-//           </Collapsible.Content>
-//         </Collapsible>
-
-//         <div className="flex justify-center">
-//           <button
-//             onClick={toggleExpand}
-//             className="bg-primary text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-orange-600 transition duration-300"
-//           >
-//             {isExpanded ? "Show Less" : "Learn More"}
-//           </button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
 
 function EventCard({ event, onClick }) {
   return (

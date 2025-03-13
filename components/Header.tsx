@@ -40,11 +40,8 @@ export default function Header() {
           aria-label="Go to homepage"
           className="transition-opacity hover:opacity-80"
         >
-          <J9Logo width="auto" height="auto" />
+          <J9Logo width="300" height="auto" />
         </Link>
-        {/* <h2 className="text-2xl font-bold text-primary-darker">
-          J9 Legacy Foundation
-        </h2> */}
         {isMobile ? (
           <button
             onClick={toggleMenu}
