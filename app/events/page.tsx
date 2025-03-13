@@ -23,21 +23,43 @@ export default function EventsPage() {
     src: "https://forms.gle/KdRtoad9YsEibRNG6",
   };
 
+  const pastEvent = {
+    id: 1,
+    title: "Memorial 3 by Lacrosse Jamboree",
+    date: "November 30, 2024",
+    time: "9AM - 3PM",
+    location: "Kellogg Middle School",
+    address: "16045 25th AVE NE, Shoreline, WA 98155",
+    description:
+      "3by lacrosse is fast paced, free flowing game which heavily emphasizes skill and quick decision making under pressure.It’s a finesse and skill game, and not a strength and power game.",
+    imageUrl: "/3by.JPG",
+    additionalInfo:
+      "The foundation hosted a 3 by jamboree on Saturday November 30th, 2024, in honor of Jacob Eshenbaugh, who passed away on May 23, 2024.",
+    src: "https://drive.google.com/drive/folders/1JUiGQdtvx7Wwz__n-b51-E1xtgSJRhhc?usp=sharing"
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
       <main className="flex-grow container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-6 text-primary">
-          Upcoming Events
-        </h1>
-        <p className="text-lg text-accent mb-16">
-          Join us in our mission to empower youth and families. Check out our
-          upcoming events and get involved!
+      <section className="mb-16">
+      <h1 className="text-4xl font-bold mb-6 text-primary">Upcoming Events</h1>
+      <p className="text-lg text-accent mb-16">
+          Join us in our mission to empower youth and families. Check out our upcoming events and get involved!
         </p>
         <EventCard event={event} onClick={() => setIsModalOpen(true)} />
-        {isModalOpen && (
-          <Modal event={event} onClose={() => setIsModalOpen(false)} />
-        )}
+        {isModalOpen && <Modal event={event} onClose={() => setIsModalOpen(false)} />}
+      </section>
+
+      {/* <section className="mb-16">
+        <h2 className="text-3xl font-bold mb-6 text-orange-700">Past Events</h2>
+        <p className="text-lg text-gray-700 mb-8">
+          Take a look at some of our previous events and the impact we've made in our community.
+        </p>
+        <EventCard event={pastEvent} onClick={() => setIsModalOpen(true)} />
+            {isModalOpen && <Modal event={pastEvent} onClose={() => setIsModalOpen(false)} />}
+      </section> */}
+
       </main>
       <Footer />
     </div>
