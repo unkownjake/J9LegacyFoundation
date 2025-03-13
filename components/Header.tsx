@@ -33,14 +33,14 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-md">
+    <header className="bg-white shadow-md border-b">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link
           href="/"
           aria-label="Go to homepage"
           className="transition-opacity hover:opacity-80"
         >
-          <J9Logo width={80} height="auto" />
+          <J9Logo width="auto" height="auto" />
         </Link>
         {/* <h2 className="text-2xl font-bold text-primary-darker">
           J9 Legacy Foundation
