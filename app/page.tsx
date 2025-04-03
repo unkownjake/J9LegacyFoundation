@@ -61,7 +61,8 @@ export default function Home() {
         "Learn about our mission and the impact we're making in the community.",
       icon: <Info className="h-6 w-6" />,
       link: "/about",
-      image: "/founders.JPG",
+      image: "/family.jpg",
+      verticalPosition: "center",
     },
     {
       title: "Our Events",
@@ -69,6 +70,7 @@ export default function Home() {
       icon: <Calendar className="h-6 w-6" />,
       link: "/events",
       image: "/camp.JPG",
+      verticalPosition: "center",
     },
     {
       title: "Support Our Cause",
@@ -76,7 +78,8 @@ export default function Home() {
         "Find out how you can contribute to our mission and make a difference.",
       icon: <Heart className="h-6 w-6" />,
       link: "/donate",
-      image: "/team.JPG",
+      image: "/support_our_cause.jpg",
+      verticalPosition: "20%",
     },
   ];
 
@@ -139,17 +142,27 @@ function QuickLinkCard({
   icon,
   link,
   image,
+  verticalPosition = "center",
 }: {
   title: string;
   description: string;
   icon: React.ReactNode;
   link: string;
   image: string;
+  verticalPosition?: string;
 }) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col text-left">
-      <div className="relative h-48 w-full">
-        <Image src={image} alt={title} fill className="object-cover" />
+      <div className="relative aspect-[4/3] w-full">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover object-center"
+          style={{ objectPosition: `center ${verticalPosition}` }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={false}
+        />
       </div>
       <div className="p-6 flex flex-col flex-grow justify-between">
         <div>
