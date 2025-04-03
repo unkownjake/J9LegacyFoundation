@@ -6,6 +6,19 @@ import Footer from "../../components/Footer";
 import { Calendar, Clock, MapPin, X } from "lucide-react";
 import Image from "next/image";
 
+interface Event {
+  id: number;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  address?: string;
+  description: string;
+  imageUrl: string;
+  additionalInfo: string;
+  src: string;
+}
+
 export default function EventsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -31,7 +44,7 @@ export default function EventsPage() {
     location: "Kellogg Middle School",
     address: "16045 25th AVE NE, Shoreline, WA 98155",
     description:
-      "3by lacrosse is fast paced, free flowing game which heavily emphasizes skill and quick decision making under pressure.It’s a finesse and skill game, and not a strength and power game.",
+      "3by lacrosse is fast paced, free flowing game which heavily emphasizes skill and quick decision making under pressure.It's a finesse and skill game, and not a strength and power game.",
     imageUrl: "/3by.JPG",
     additionalInfo:
       "The foundation hosted a 3 by jamboree on Saturday November 30th, 2024, in honor of Jacob Eshenbaugh, who passed away on May 23, 2024.",
@@ -70,7 +83,7 @@ export default function EventsPage() {
   );
 }
 
-function EventCard({ event, onClick }) {
+function EventCard({ event, onClick }: { event: Event; onClick: () => void }) {
   return (
     <div
       className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 max-w-2xl mx-auto cursor-pointer"
@@ -110,7 +123,7 @@ function EventCard({ event, onClick }) {
   );
 }
 
-function Modal({ event, onClose }) {
+function Modal({ event, onClose }: { event: Event; onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">

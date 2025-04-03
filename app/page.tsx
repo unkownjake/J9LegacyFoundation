@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<Slider | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,7 +23,13 @@ export default function Home() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const CustomArrow = ({ direction, onClick }) => (
+  const CustomArrow = ({
+    direction,
+    onClick,
+  }: {
+    direction: "prev" | "next";
+    onClick: () => void;
+  }) => (
     <button
       onClick={onClick}
       className={`bg-primary text-white p-2 rounded-full shadow-md hover:bg-orange-600 transition-colors duration-300 ${
@@ -104,11 +110,11 @@ export default function Home() {
                 <div className="flex justify-center mt-6">
                   <CustomArrow
                     direction="prev"
-                    onClick={() => sliderRef.current.slickPrev()}
+                    onClick={() => sliderRef.current?.slickPrev()}
                   />
                   <CustomArrow
                     direction="next"
-                    onClick={() => sliderRef.current.slickNext()}
+                    onClick={() => sliderRef.current?.slickNext()}
                   />
                 </div>
               </div>
@@ -127,7 +133,19 @@ export default function Home() {
   );
 }
 
-function QuickLinkCard({ title, description, icon, link, image }) {
+function QuickLinkCard({
+  title,
+  description,
+  icon,
+  link,
+  image,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  link: string;
+  image: string;
+}) {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col text-left">
       <div className="relative h-48 w-full">

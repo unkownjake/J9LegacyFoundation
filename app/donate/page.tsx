@@ -46,7 +46,17 @@ export default function DonatePage() {
   );
 }
 
-function DonationOption({ title, icon, link, description }) {
+function DonationOption({
+  title,
+  icon,
+  link,
+  description,
+}: {
+  title: string;
+  icon: React.ReactNode;
+  link: string;
+  description: string;
+}) {
   return (
     <div className="flex flex-col items-center p-4 border rounded-lg shadow-sm">
       <div className="text-primary mb-2">{icon}</div>
