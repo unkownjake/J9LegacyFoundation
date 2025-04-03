@@ -11,6 +11,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "J9 Legacy Foundation",
   description: "Empowering communities to create a sustainable future",
+  icons: {
+    icon: {
+      url: "/j9Logo.png",
+      type: "image/png",
+    },
+  },
 };
 
 export default function RootLayout({
