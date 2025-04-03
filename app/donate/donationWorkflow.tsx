@@ -1,10 +1,59 @@
 import React, { useState } from "react";
 
+// Payment method configuration
+const PAYMENT_CONFIG = {
+  venmo: {
+    enabled: false,
+    link: "https://venmo.com/yourusername?txn=pay&amount={amount}&note={note}",
+  },
+  paypal: {
+    enabled: false,
+    link: "https://www.paypal.me/j9%20legacy%20foundation/{amount}",
+  },
+  zelle: {
+    enabled: true,
+    email: "nmaxey@j9legacy.org",
+  },
+};
+
+function ComingSoonModal({
+  isOpen,
+  onClose,
+  method,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  method: string;
+}) {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+        <h3 className="text-xl font-bold mb-4">Coming Soon</h3>
+        <p className="mb-4">
+          {method.charAt(0).toUpperCase() + method.slice(1)} donations will be
+          available soon. In the meantime, please use Zelle for your donation.
+        </p>
+        <div className="flex justify-end">
+          <button
+            onClick={onClose}
+            className="bg-accent text-accent-foreground px-4 py-2 rounded hover:bg-primary-darker"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function DonationWorkflow() {
   const [method, setMethod] = useState("venmo");
   const [amount, setAmount] = useState("25");
   const [customAmount, setCustomAmount] = useState("50");
   const [coverFees, setCoverFees] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const finalAmount = () => {
     let base =
@@ -20,10 +69,12 @@ function DonationWorkflow() {
     const amountValue = finalAmount();
 
     if (method === "venmo") {
-      return `https://venmo.com/yourusername?txn=pay&amount=${amountValue}&note=${note}`;
+      return PAYMENT_CONFIG.venmo.link
+        .replace("{amount}", amountValue)
+        .replace("{note}", note);
     }
     if (method === "paypal") {
-      return `https://www.paypal.me/j9%20legacy%20foundation/${amountValue}`;
+      return PAYMENT_CONFIG.paypal.link.replace("{amount}", amountValue);
     }
     return "#";
   };
@@ -32,7 +83,7 @@ function DonationWorkflow() {
     if (method === "zelle") {
       window.open("https://www.zellepay.com/", "_blank");
     } else {
-      window.open(getLink(), "_blank");
+      setShowModal(true);
     }
   };
 
@@ -180,6 +231,12 @@ function DonationWorkflow() {
           ? "Take me to Zelle"
           : `Donate Now ($${finalAmount()})`}
       </button>
+
+      <ComingSoonModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        method={method}
+      />
     </div>
   );
 }
