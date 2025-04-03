@@ -33,7 +33,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-md border-b">
+    <header className="bg-white shadow-md border-b sticky top-0 z-10">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link
           href="/"
@@ -78,7 +78,15 @@ export default function Header() {
   );
 }
 
-function NavItem({ href, text, onClick }) {
+function NavItem({
+  href,
+  text,
+  onClick,
+}: {
+  href: string;
+  text: string;
+  onClick?: () => void;
+}) {
   return (
     <li>
       <Link

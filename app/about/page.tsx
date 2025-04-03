@@ -1,12 +1,9 @@
 import Image from "next/image";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-white">
-      <Header />
-      <main className="flex-grow container mx-auto px-4 py-12">
+    <div>
+      <div className="container mx-auto px-4 py-12">
         <h1 className="text-primary text-4xl font-bold mb-12">
           About J9 Legacy Foundation
         </h1>
@@ -16,17 +13,26 @@ export default function AboutPage() {
               Our Mission
             </h2>
             <p className="text-lg text-accent mb-6">
-              J9 Legacy Foundation is dedicated to empowering youth and families
-              by providing financial support for camp attendance and organizing
-              community events that enhance access to educational and
-              recreational opportunities.
-            </p>
-            <p className="text-lg text-accent mb-6">
-              In honor of Jacob Eshenbaugh, who passed away on May 23, 2024. As
-              a child, he tried many sports, but lacrosse was the one that he
-              loved most and he played for most of his life. He usually was the
-              smallest player on the field but was not intimidated by anyone, no
-              matter how much larger they were.
+              {`The J9 Legacy Foundation was started to honor the memory of our
+              son, brother, cousin, and friend, Jacob Eshenbaugh, who passed
+              away on May 23, 2024. As a child, summer camps were an important
+              and impactful part of Jacob's life, so we thought it was fitting
+              to try and help children experience something that was so
+              meaningful to him.`}
+              <br />
+              <br />
+              {`The Foundation is dedicated to empowering youth
+              and families by providing financial support for camp attendance
+              and organizing community events that enhance access to educational
+              and recreational opportunities. We believe that every child
+              deserves the chance to grow, learn, and explore in a nurturing and
+              supportive environment.`}
+              <br />
+              <br />
+              {`Through our efforts, we honor Jacob's
+              legacy by opening doors to opportunities that create cherished
+              memories for children in need. Together, we strive to transform
+              lives and make a lasting impact, one experience at a time.`}
             </p>
             <h2 className="text-xl text-accent font-semibold mt-6 mb-4">
               Our Impact
@@ -51,16 +57,15 @@ export default function AboutPage() {
             />
           </div>
         </div>
-      </main>
-      <section className="flex-grow bg-primary-lighter">
+      </div>
+      <section className="w-full bg-primary-lighter">
         <div className="px-4 py-16">
-          <p className="max-w-screen-lg px-4 mx-auto text-xl text-primary-darker text-center font-medium">
+          <p className="max-w-screen-lg mx-auto text-xl text-primary-darker text-center font-medium">
             Join us in our mission to create lasting positive impacts on the
             lives of youth and families in our community.
           </p>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

@@ -84,54 +84,50 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">
-        <section className="bg-white py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
-              Welcome to J9 Legacy Foundation
-            </h1>
-            <p className="text-lg text-accent pt-4 mx-auto max-w-2xl">
-              Empowering youth and families to attend camps through community
-              events that support access to educational and recreational
-              opportunities.
-            </p>
-          </div>
-        </section>
-        <section className="bg-primary-lighter py-16">
-          <div className="container mx-auto px-4 text-center">
-            {isMobile ? (
-              <div>
-                <Slider ref={sliderRef} {...carouselSettings}>
-                  {quickLinks.map((link, index) => (
-                    <div key={index} className="px-2">
-                      <QuickLinkCard {...link} />
-                    </div>
-                  ))}
-                </Slider>
-                <div className="flex justify-center mt-6">
-                  <CustomArrow
-                    direction="prev"
-                    onClick={() => sliderRef.current?.slickPrev()}
-                  />
-                  <CustomArrow
-                    direction="next"
-                    onClick={() => sliderRef.current?.slickNext()}
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="flex flex-col">
+      <section className="bg-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
+            Welcome to J9 Legacy Foundation
+          </h1>
+          <p className="text-lg text-accent pt-4 mx-auto max-w-2xl">
+            Empowering youth and families to attend camps through community
+            events that support access to educational and recreational
+            opportunities.
+          </p>
+        </div>
+      </section>
+      <section className="bg-primary-lighter py-8">
+        <div className="container mx-auto px-4 text-center">
+          {isMobile ? (
+            <div>
+              <Slider ref={sliderRef} {...carouselSettings}>
                 {quickLinks.map((link, index) => (
-                  <QuickLinkCard key={index} {...link} />
+                  <div key={index} className="px-2">
+                    <QuickLinkCard {...link} />
+                  </div>
                 ))}
+              </Slider>
+              <div className="flex justify-center mt-6">
+                <CustomArrow
+                  direction="prev"
+                  onClick={() => sliderRef.current?.slickPrev()}
+                />
+                <CustomArrow
+                  direction="next"
+                  onClick={() => sliderRef.current?.slickNext()}
+                />
               </div>
-            )}
-          </div>
-        </section>
-      </main>
-      <Footer />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {quickLinks.map((link, index) => (
+                <QuickLinkCard key={index} {...link} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
