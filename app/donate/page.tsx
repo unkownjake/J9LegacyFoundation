@@ -1,75 +1,39 @@
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+"use client";
 import Link from "next/link";
-import { Banknote, CreditCard, Wallet } from "lucide-react"; // icons, can be swapped to diff library
+import DonationWorkflow from "./donationWorkflow";
 
 export default function DonatePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-6 text-orange-700">
-          Support Our Cause
-        </h1>
-        <p className="text-lg text-gray-700 mb-8">
-          Your donation helps us continue our mission to support youth
-          athletics. Every contribution, no matter the size, makes a difference.
-        </p>
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-orange-600">
-            Donation Options
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            <DonationOption
-              title="Venmo"
-              icon={<Wallet className="h-6 w-6" />}
-              link="https://venmo.com/j9legacyfoundation"
-              description="Quick and easy mobile payments"
-            />
-            <DonationOption
-              title="PayPal"
-              icon={<CreditCard className="h-6 w-6" />}
-              link="https://paypal.me/j9legacyfoundation"
-              description="Secure online payments"
-            />
-            <DonationOption
-              title="Zelle"
-              icon={<Banknote className="h-6 w-6" />}
-              link="https://www.zellepay.com/go/j9legacyfoundation"
-              description="Direct bank-to-bank transfers"
-            />
-          </div>
-        </div>
-      </main>
-      <Footer />
-    </div>
-  );
-}
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold mb-6 text-primary">
+        Support Our Cause
+      </h1>
+      <p className="text-lg text-gray-700 mb-8">
+        Your donation helps us continue our mission to support youth athletics.
+        Every contribution, no matter the size, makes a difference.
+      </p>
+      <DonationWorkflow />
 
-function DonationOption({
-  title,
-  icon,
-  link,
-  description,
-}: {
-  title: string;
-  icon: React.ReactNode;
-  link: string;
-  description: string;
-}) {
-  return (
-    <div className="flex flex-col items-center p-4 border rounded-lg shadow-sm">
-      <div className="text-primary mb-2">{icon}</div>
-      <h3 className="text-xl font-medium mb-2 text-orange-700">{title}</h3>
-      <p className="text-accent text-center mb-4">{description}</p>
-      <Link
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bg-primary text-white px-4 py-2 rounded hover:bg-orange-600 transition duration-300 flex items-center"
-      >
-        Donate with {title}
-      </Link>
+      <section className="mt-16">
+        <h2 className="text-3xl font-bold mb-8 text-primary text-center">
+          Building Our Impact
+        </h2>
+
+        <div className="bg-white p-8 rounded-xl shadow-lg border max-w-3xl mx-auto">
+          <p className="text-lg text-gray-700 mb-6">
+            We are currently in the process of identifying and establishing
+            partnerships with youth sports programs and organizations in the
+            greater Seattle area that align with our mission. Your donations
+            will help us support these initiatives once they are finalized.
+          </p>
+          <p className="text-lg text-gray-700">
+            We are committed to transparency and will keep our donors informed
+            as we develop our programs and partnerships. Thank you for your
+            support as we work to make a meaningful impact in our local
+            community.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
