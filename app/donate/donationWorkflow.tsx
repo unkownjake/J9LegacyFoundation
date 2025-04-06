@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const PAYMENT_CONFIG = {
   venmo: {
     enabled: false,
-    link: "https://venmo.com/yourusername?txn=pay&amount={amount}&note={note}",
+    link: "https://venmo.com/j9legacy?txn=pay&amount={amount}&note={note}",
   },
   paypal: {
     enabled: false,
@@ -32,8 +32,8 @@ function ComingSoonModal({
       <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
         <h3 className="text-xl font-bold mb-4">Coming Soon</h3>
         <p className="mb-4">
-          {method.charAt(0).toUpperCase() + method.slice(1)} donations will be
-          available soon. In the meantime, please use Zelle for your donation.
+          Paypal donations will be available soon. In the meantime, please use
+          Venmo or Zelle for your donation.
         </p>
         <div className="flex justify-end">
           <button
@@ -82,6 +82,8 @@ function DonationWorkflow() {
   const handleDonate = () => {
     if (method === "zelle") {
       window.open("https://www.zellepay.com/", "_blank");
+    } else if (method === "venmo") {
+      window.open(getLink(), "_blank");
     } else {
       setShowModal(true);
     }
