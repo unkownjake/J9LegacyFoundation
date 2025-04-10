@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Heart } from "lucide-react";
 import { J9Logo } from "@/components/J9Logo";
 
 export default function Header() {
@@ -68,10 +68,21 @@ export default function Header() {
           </button>
         ) : (
           <nav>
-            <ul className="flex space-x-12">
-              {navItems.map((item) => (
-                <NavItem key={item.href} href={item.href} text={item.text} />
-              ))}
+            <ul className="flex space-x-12 items-center">
+              {navItems
+                .filter((item) => item.text !== "Donate")
+                .map((item) => (
+                  <NavItem key={item.href} href={item.href} text={item.text} />
+                ))}
+              <li>
+                <Link
+                  href="/donate"
+                  className="bg-accent text-white flex items-center gap-2 px-6 py-2 rounded-lg font-semibold hover:bg-accent-lighter transition duration-300"
+                >
+                  <Heart className="fill-white w-4 h-4" />
+                  Donate
+                </Link>
+              </li>
             </ul>
           </nav>
         )}

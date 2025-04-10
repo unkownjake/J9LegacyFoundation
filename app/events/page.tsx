@@ -40,9 +40,11 @@ export default function EventsPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <UpcomingEvents events={upcomingEvents} />
-      <PastEvents events={pastEvents} />
+    <div className="bg-secondary">
+      <div className="container mx-auto px-4 py-12">
+        <UpcomingEvents events={upcomingEvents} />
+        <PastEvents events={pastEvents} />
+      </div>
     </div>
   );
 }
