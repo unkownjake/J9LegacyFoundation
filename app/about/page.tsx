@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Tent, Users, Volleyball, Rainbow } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -54,15 +55,19 @@ export default function AboutPage() {
           </p>
           <ul className="flex flex-col lg:flex-row mx-auto gap-6 list-inside text-accent">
             <li className="rounded-md bg-orange-100 p-4">
+              <Tent className="mb-1"></Tent>
               Sponsor youth and families to attend camps
             </li>
             <li className="rounded-md bg-orange-100 p-4">
+              <Users className="mb-1"></Users>
               Host community events supporting educational access
             </li>
             <li className="rounded-md bg-orange-100 p-4">
+              <Volleyball className="mb-1"></Volleyball>
               Create opportunities for recreational activities
             </li>
             <li className="rounded-md bg-orange-100 p-4">
+              <Rainbow className="mb-1"></Rainbow>
               Foster personal growth and development
             </li>
           </ul>
@@ -75,12 +80,6 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-        {/* <div className="mx-auto my-12">
-          <p className="max-w-screen-lg mx-auto text-xl text-accent text-center font-medium">
-            Join us in our mission to create lasting positive impacts on the
-            lives of youth and families in our community.
-          </p>
-        </div> */}
       </div>
     </div>
   );
