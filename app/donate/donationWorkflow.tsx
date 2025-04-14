@@ -3,12 +3,12 @@ import React, { useState } from "react";
 // Payment method configuration
 const PAYMENT_CONFIG = {
   venmo: {
-    enabled: false,
+    enabled: true,
     link: "https://venmo.com/j9legacy?txn=pay&amount={amount}&note={note}",
   },
   paypal: {
-    enabled: false,
-    link: "https://www.paypal.me/j9%20legacy%20foundation/{amount}",
+    enabled: true,
+    link: "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6E6ZPWVH5ZL22&item_name=Web+Donation&amount={amount}&currency_code=USD&custom=website_donation&return={return_url}",
   },
   zelle: {
     enabled: true,
@@ -16,44 +16,33 @@ const PAYMENT_CONFIG = {
   },
 };
 
-function ComingSoonModal({
-  isOpen,
-  onClose,
-  method,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  method: string;
-}) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white p-6 rounded-lg max-w-md w-full mx-4">
-        <h3 className="text-xl font-bold mb-4">Coming Soon</h3>
-        <p className="mb-4">
-          Paypal donations will be available soon. In the meantime, please use
-          Venmo or Zelle for your donation.
-        </p>
-        <div className="flex justify-end">
-          <button
-            onClick={onClose}
-            className="bg-accent text-accent-foreground px-4 py-2 rounded hover:bg-primary-darker"
-          >
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function DonationWorkflow() {
-  const [method, setMethod] = useState("venmo");
+  const [method, setMethod] = useState("paypal");
   const [amount, setAmount] = useState("25");
   const [customAmount, setCustomAmount] = useState("50");
-  const [coverFees, setCoverFees] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [coverFees, setCoverFees] = useState(true);
+  const [donorName, setDonorName] = useState("");
+  const [donorEmail, setDonorEmail] = useState("");
+  const [wantsReceipt, setWantsReceipt] = useState(true);
+  const [showError, setShowError] = useState(false);
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newEmail = e.target.value;
+    setDonorEmail(newEmail);
+    setShowError(false);
+
+    if (newEmail && !validateEmail(newEmail)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  };
 
   const finalAmount = () => {
     let base =
@@ -74,7 +63,21 @@ function DonationWorkflow() {
         .replace("{note}", note);
     }
     if (method === "paypal") {
-      return PAYMENT_CONFIG.paypal.link.replace("{amount}", amountValue);
+      let returnUrl = encodeURIComponent(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/donate/thank-you`
+      );
+      if (wantsReceipt) {
+        returnUrl = encodeURIComponent(
+          `${
+            process.env.NEXT_PUBLIC_BASE_URL
+          }/api/paypal/return?name=${encodeURIComponent(
+            donorName
+          )}&email=${encodeURIComponent(donorEmail)}&amount=${amountValue}`
+        );
+      }
+      return PAYMENT_CONFIG.paypal.link
+        .replace("{amount}", amountValue)
+        .replace("{return_url}", returnUrl);
     }
     return "#";
   };
@@ -82,11 +85,20 @@ function DonationWorkflow() {
   const handleDonate = () => {
     if (method === "zelle") {
       window.open("https://www.zellepay.com/", "_blank");
-    } else if (method === "venmo") {
-      window.open(getLink(), "_blank");
-    } else {
-      setShowModal(true);
+      return;
+    } else if (method === "paypal" && wantsReceipt) {
+      if (!donorName || !donorEmail) {
+        setShowError(true);
+        return;
+      }
+      if (!validateEmail(donorEmail)) {
+        setEmailError("Please enter a valid email address");
+        return;
+      }
     }
+    setShowError(false);
+    setEmailError("");
+    window.open(getLink(), "_blank");
   };
 
   return (
@@ -138,7 +150,7 @@ function DonationWorkflow() {
           Choose a payment method:
         </label>
         <div className="flex gap-4">
-          {["venmo", "paypal", "zelle"].map((m) => (
+          {["paypal", "venmo", "zelle"].map((m) => (
             <label key={m} className="flex items-center gap-2">
               <input
                 type="radio"
@@ -217,28 +229,117 @@ function DonationWorkflow() {
           </div>
 
           {/* Instructions */}
-          <div className="text-sm text-gray-600 mb-4">
-            Please leave your <strong>name</strong> and <strong>email</strong>{" "}
-            in the note so we can send you a receipt.
-          </div>
+          {method !== "paypal" && (
+            <div className="text-sm text-gray-600 mb-4">
+              Please leave your <strong>name</strong> and <strong>email</strong>{" "}
+              in the note so we can send you a receipt.
+            </div>
+          )}
+
+          {method === "paypal" && (
+            <div className="mb-4">
+              <div className="mb-4">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={wantsReceipt}
+                    onChange={(e) => {
+                      setWantsReceipt(e.target.checked);
+                      setShowError(false);
+                      setEmailError("");
+                    }}
+                    className="h-4 w-4 border-gray-300 text-accent focus:ring-accent"
+                  />
+                  I would like to receive a donation receipt via email
+                </label>
+              </div>
+
+              {wantsReceipt && (
+                <>
+                  <div className="mb-2">
+                    <label className="block font-semibold mb-1">
+                      Your Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={donorName}
+                      onChange={(e) => {
+                        setDonorName(e.target.value);
+                        setShowError(false);
+                      }}
+                      className={`w-full border px-3 py-2 rounded focus:ring-accent focus:border-accent ${
+                        showError && !donorName
+                          ? "border-red-500"
+                          : "border-gray-300"
+                      }`}
+                      placeholder="Enter your name"
+                      required
+                    />
+                    {showError && !donorName && (
+                      <p className="text-red-500 text-sm mt-1">
+                        Name is required for receipt
+                      </p>
+                    )}
+                  </div>
+                  <div className="mb-2">
+                    <label className="block font-semibold mb-1">
+                      Your Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      value={donorEmail}
+                      onChange={handleEmailChange}
+                      className={`w-full border px-3 py-2 rounded focus:ring-accent focus:border-accent ${
+                        (showError && !donorEmail) || emailError
+                          ? "border-red-500"
+                          : "border-gray-300"
+                      }`}
+                      placeholder="Enter your email"
+                      required
+                    />
+                    {showError && !donorEmail && (
+                      <p className="text-red-500 text-sm mt-1">
+                        Email is required for receipt
+                      </p>
+                    )}
+                    {emailError && (
+                      <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                    )}
+                  </div>
+                  <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <p className="text-blue-800 text-sm">
+                      <strong>Note:</strong> After payment, either wait to be
+                      redirected or click the "Return to J9 Legacy Foundation"
+                      button to receive your receipt.
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </>
       )}
 
       {/* Donate Now Button */}
       <button
         onClick={handleDonate}
-        className="w-full bg-accent text-accent-foreground px-4 py-3 rounded-lg hover:bg-primary-darker focus:ring-2 focus:ring-accent focus:ring-offset-2"
+        disabled={
+          method === "paypal" &&
+          wantsReceipt &&
+          (!donorName || !donorEmail || !!emailError)
+        }
+        className={`w-full bg-accent text-accent-foreground px-4 py-3 rounded-lg hover:bg-primary-darker focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+          method === "paypal" &&
+          wantsReceipt &&
+          (!donorName || !donorEmail || !!emailError)
+            ? "opacity-50 cursor-not-allowed"
+            : ""
+        }`}
       >
         {method === "zelle"
           ? "Take me to Zelle"
           : `Donate Now ($${finalAmount()})`}
       </button>
-
-      <ComingSoonModal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        method={method}
-      />
     </div>
   );
 }
