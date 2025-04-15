@@ -42,8 +42,9 @@ export async function GET(request: Request) {
     );
 
     // Send email
+    const from = `"J9 Legacy Foundation" <info@j9legacy.org>`;
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from,
       to: email,
       subject: "Thank You for Your Donation to J9 Legacy Foundation",
       html: htmlContent,
