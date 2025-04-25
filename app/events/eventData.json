@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "slug": "skate-fundraiser",
+      "title": "J9 Legacy Skate Fundraiser",
+      "date": "May 10, 2025",
+      "time": "4:00 PM - 7:00 PM",
+      "location": "Lynwood Bowl & Skate",
+      "address": "6210 200TH ST SW Lynwood, WA 98036",
+      "description": "Join us for a fun-filled evening of skating!",
+      "cardImageUrl": "/rollerskates.jpg",
+      "modalImageUrl": "/skate-flyer.png",
+      "additionalInfo": "All ages welcome. Ticket purchases will be made at the venue, but please RSVP below for us to get a gauge for the number of attendees.",
+      "src": "https://forms.gle/KdRtoad9YsEibRNG6"
+    }
+  ]
+  
