@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Heart } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -24,9 +25,10 @@ export default function Footer() {
           <div className="flex-1 flex items-center justify-center md:justify-center">
             <Link
               href="/donate"
-              className="bg-white text-accent px-6 py-2 rounded-lg font-semibold hover:bg-primary transition duration-300 inline-block"
+              className="bg-white text-accent flex items-center gap-2 px-6 py-2 rounded-lg font-semibold hover:bg-accent-lighter transition duration-300"
             >
-              Donate Now
+              <Heart className="fill-accent w-4 h-4" />
+              Donate
             </Link>
           </div>
         </div>

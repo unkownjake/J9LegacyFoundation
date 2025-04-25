@@ -15,7 +15,7 @@ function AnimatedHero() {
   return (
     <div>
       <h1
-        className={`lg:text-6xl sm:text-5xl text-4xl font-bold mb-4 text-white transform transition-all duration-1000 ease-out ${
+        className={`lg:text-6xl text-4xl font-bold mb-4 text-white transform transition-all duration-1000 ease-out ${
           isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-24"
         }`}
       >

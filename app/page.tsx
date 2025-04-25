@@ -86,14 +86,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="bg-gradient-to-b from-orange-600 via-[#FBAC67_40%] to-[#FFF_70%] py-8">
+      <section className="bg-gradient-to-b from-orange-600 via-[#FBAC67_55%] to-[#f0f0f0_10%] py-8">
         <div className="container mx-auto mt-28 mb-32 px-4 text-left">
           <AnimatedHero></AnimatedHero>
-          {/* <p className="text-lg text-secondary pt-4 max-w-2xl">
-            Empowering youth and families to attend camps through community
-            events that support access to educational and recreational
-            opportunities.
-          </p> */}
         </div>
         <div className="container mx-auto p-8 text-center">
           {isMobile ? (

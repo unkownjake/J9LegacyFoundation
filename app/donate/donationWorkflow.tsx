@@ -102,7 +102,7 @@ function DonationWorkflow() {
   };
 
   return (
-    <div className="p-6 max-w-xl mx-auto rounded-2xl shadow-lg border">
+    <div className="p-6 bg-white max-w-xl mx-auto rounded-2xl shadow-lg border">
       <style jsx>{`
         input[type="radio"] {
           -webkit-appearance: none;
@@ -328,7 +328,7 @@ function DonationWorkflow() {
           wantsReceipt &&
           (!donorName || !donorEmail || !!emailError)
         }
-        className={`w-full bg-accent text-accent-foreground px-4 py-3 rounded-lg hover:bg-primary-darker focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
+        className={`w-full bg-accent text-accent-foreground px-4 py-3 rounded-lg hover:bg-accent-lighter duration-300 focus:ring-2 focus:ring-accent focus:ring-offset-2 ${
           method === "paypal" &&
           wantsReceipt &&
           (!donorName || !donorEmail || !!emailError)
