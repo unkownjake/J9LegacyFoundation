@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import getIcon from "../donate/DonationIcons";
 
 // Payment method configuration
 const PAYMENT_CONFIG = {
@@ -102,7 +103,7 @@ function DonationWorkflow() {
   };
 
   return (
-    <div className="p-6 bg-white max-w-xl mx-auto rounded-2xl shadow-lg border">
+    <div className="p-6 bg-white max-w-3xl md:w-1/2 rounded-xl shadow-lg border">
       <style jsx>{`
         input[type="radio"] {
           -webkit-appearance: none;
@@ -151,7 +152,7 @@ function DonationWorkflow() {
         </label>
         <div className="flex gap-4">
           {["paypal", "venmo", "zelle"].map((m) => (
-            <label key={m} className="flex items-center gap-2">
+            <label key={m} className="flex items-center gap-3">
               <input
                 type="radio"
                 name="method"
@@ -159,17 +160,20 @@ function DonationWorkflow() {
                 checked={method === m}
                 onChange={(e) => setMethod(e.target.value)}
               />
-              {m.charAt(0).toUpperCase() + m.slice(1)}
+              <div className="flex justify-center items-center mx-auto border border-accent text-accent rounded-md py-2 px-4 gap-2">
+                {getIcon(m)} {/* Retrieve icon */}
+                {m.charAt(0).toUpperCase() + m.slice(1)}
+              </div>
             </label>
           ))}
         </div>
       </div>
 
       {method === "zelle" ? (
-        <div className="mb-4 bg-gray-50 rounded-lg">
-          <h3 className="text-lg font-semibold mb-2">Donate via Zelle</h3>
+        <div className="mb-4 rounded-lg">
+          <label className="block font-semibold mb-2">Donate via Zelle</label>
           <p className="mb-1">Find us on Zelle at:</p>
-          <p className="font-mono mb-3 text-accent">
+          <p className="font-mono mb-4 text-accent">
             <strong>nmaxey@j9legacy.org</strong>
           </p>
           <p className="text-sm text-gray-600">
@@ -217,12 +221,12 @@ function DonationWorkflow() {
 
           {/* Cover Fees */}
           <div className="mb-4">
-            <label className="flex items-center gap-2">
+            <label className="flex items-center text-accent gap-2">
               <input
                 type="checkbox"
                 checked={coverFees}
                 onChange={(e) => setCoverFees(e.target.checked)}
-                className="h-4 w-4 border-gray-300 text-accent focus:ring-accent"
+                className="h-4 w-4 border-gray-300 focus:ring-accent"
               />
               I would like to cover the transaction fees (adds 1.99%)
             </label>
