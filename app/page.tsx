@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimatedHero from "@/components/AnimatedHero";
 import { Info, Calendar, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -32,7 +33,7 @@ export default function Home() {
   }) => (
     <button
       onClick={onClick}
-      className={`bg-primary text-white p-2 rounded-full shadow-md hover:bg-orange-600 transition-colors duration-300 ${
+      className={`bg-primary text-white p-2 rounded-full shadow-md hover:bg-primary-darker transition-colors duration-300 ${
         direction === "prev" ? "mr-2" : "ml-2"
       }`}
       aria-label={direction === "prev" ? "Previous slide" : "Next slide"}
@@ -85,20 +86,16 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="bg-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
-            Welcome to J9 Legacy Foundation
-          </h1>
-          <p className="text-lg text-accent pt-4 mx-auto max-w-2xl">
+      <section className="bg-gradient-to-b from-orange-600 via-[#FBAC67_40%] to-[#FFF_70%] py-8">
+        <div className="container mx-auto mt-28 mb-32 px-4 text-left">
+          <AnimatedHero></AnimatedHero>
+          {/* <p className="text-lg text-secondary pt-4 max-w-2xl">
             Empowering youth and families to attend camps through community
             events that support access to educational and recreational
             opportunities.
-          </p>
+          </p> */}
         </div>
-      </section>
-      <section className="bg-primary-lighter py-8">
-        <div className="container mx-auto px-4 text-center">
+        <div className="container mx-auto p-8 text-center">
           {isMobile ? (
             <div>
               <Slider ref={sliderRef} {...carouselSettings}>
@@ -148,7 +145,7 @@ function QuickLinkCard({
   verticalPosition?: string;
 }) {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col text-left">
+    <div className="bg-white flex flex-col text-left rounded-lg shadow-md overflow-hidden hover:shadow-lg hover:scale-[1.01] duration-300">
       <div className="relative aspect-[4/3] w-full">
         <Image
           src={image}
@@ -164,12 +161,16 @@ function QuickLinkCard({
         <div>
           <div className="flex items-center mb-3">
             <div className="text-primary mr-3 flex-shrink-0">{icon}</div>
-            <h3 className="text-xl font-semibold text-orange-700">{title}</h3>
+            <h3 className="text-xl font-semibold text-primary-darker">
+              {title}
+            </h3>
           </div>
           <p className="text-accent mb-4">{description}</p>
         </div>
         <Link href={link} className="block">
-          <span className="text-primary font-semibold">Learn More &rarr;</span>
+          <span className="text-primary hover:text-primary-lighter duration-300 font-semibold">
+            Learn More &rarr;
+          </span>
         </Link>
       </div>
     </div>

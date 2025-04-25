@@ -8,6 +8,7 @@ import { J9Logo } from "@/components/J9Logo";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +33,15 @@ export default function Header() {
     { href: "/donate", text: "Donate" },
   ];
 
+  // Trigger animation when the component loads
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100); // Make component visible after 100ms
+
+    return () => clearTimeout(timer); // Clear timer after animation end
+  }, []);
+
   return (
     <header className="bg-white shadow-md border-b sticky top-0 z-10">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -40,7 +50,13 @@ export default function Header() {
           aria-label="Go to homepage"
           className="transition-opacity hover:opacity-80"
         >
-          <J9Logo width="300" height="auto" />
+          <J9Logo
+            width="300"
+            height="auto"
+            className={`transform transition-all duration-1000 ease-out ${
+              isVisible ? "opacity-100" : "opacity-0"
+            }`}
+          />
         </Link>
         {isMobile ? (
           <button
@@ -91,7 +107,7 @@ function NavItem({
     <li>
       <Link
         href={href}
-        className="text-primary-darker hover:text-primary transition duration-300"
+        className="text-primary-darker font-semibold hover:text-primary transition duration-300"
         onClick={onClick}
       >
         {text}
