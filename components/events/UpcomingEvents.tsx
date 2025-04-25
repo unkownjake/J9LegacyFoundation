@@ -2,6 +2,7 @@ import { useState } from "react";
 import EventCard from "./EventCard";
 import EventModal from "./EventModal";
 import { Event } from "./types";
+import Link from "next/link";
 
 interface UpcomingEventsProps {
   events: Event[];
@@ -17,11 +18,13 @@ export default function UpcomingEvents({ events }: UpcomingEventsProps) {
         Join us in our mission to empower youth and families. Check out our
         upcoming events and get involved!
       </p>
-      {events.map((event) => (
-        <div key={event.id} className="mb-8">
-          <EventCard event={event} onClick={() => setSelectedEvent(event)} />
-        </div>
-      ))}
+      <div className="flex gap-8 justify-center flex-wrap">
+        {events.map((event) => (
+          <div key={event.id} className="mb-8">
+            <EventCard event={event} onClick={() => setSelectedEvent(event)} />
+          </div>
+        ))}
+      </div>
       {selectedEvent && (
         <EventModal
           event={selectedEvent}

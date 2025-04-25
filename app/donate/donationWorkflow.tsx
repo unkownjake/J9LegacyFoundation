@@ -150,7 +150,7 @@ function DonationWorkflow() {
         <label className="block font-semibold mb-2">
           Choose a payment method:
         </label>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-4">
           {["paypal", "venmo", "zelle"].map((m) => (
             <label key={m} className="flex items-center gap-3">
               <input

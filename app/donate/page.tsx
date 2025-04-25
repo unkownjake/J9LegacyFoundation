@@ -15,6 +15,7 @@ export default function DonatePage() {
         </p>
 
         <div className="flex flex-col md:flex-row justify-center gap-6 mx-auto">
+          <DonationWorkflow />
           <div className="bg-white p-6 rounded-xl shadow-lg border max-w-3xl md:w-1/2">
             <h2 className="text-2xl font-bold mb-8 text-primary-darker text-center">
               Building Our Impact
@@ -32,7 +33,6 @@ export default function DonatePage() {
               community.
             </p>
           </div>
-          <DonationWorkflow />
         </div>
       </div>
     </div>

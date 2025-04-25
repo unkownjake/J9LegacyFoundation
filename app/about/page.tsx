@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Tent, Users, Volleyball, Rainbow } from "lucide-react";
+import DonationImpact from "../donate/DonationImpact";
 
 export default function AboutPage() {
   return (
