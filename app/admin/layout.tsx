@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState, useEffect, Suspense } from "react";
+import { useRouter } from "next/navigation";
 import {
   getAuth,
   signInWithPopup,
@@ -17,9 +17,8 @@ interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-export default function AdminLayout({ children }: AdminLayoutProps) {
+function AdminLayoutContent({ children }: AdminLayoutProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [status, setStatus] = useState("");
@@ -190,5 +189,25 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         </div>
       )}
     </div>
+  );
+}
+
+export default function AdminLayout({ children }: AdminLayoutProps) {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              Loading...
+            </h2>
+            <p className="text-gray-600">Initializing admin dashboard</p>
+          </div>
+        </div>
+      }
+    >
+      <AdminLayoutContent>{children}</AdminLayoutContent>
+    </Suspense>
   );
 }
