@@ -17,10 +17,18 @@ export const J9Logo: React.FC<J9LogoProps> = ({
   strokeColor = "#FF8600",
   textColor = "#223A58",
 }) => {
+  // Handle "auto" height by calculating based on aspect ratio
+  const calculatedHeight =
+    height === "auto"
+      ? typeof width === "number"
+        ? (width * 65) / 402
+        : 65
+      : height;
+
   return (
     <svg
       width={width}
-      height={height}
+      height={calculatedHeight}
       viewBox="0 0 402 65"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

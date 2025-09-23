@@ -1,87 +1,49 @@
-import Image from "next/image";
-import { Tent, Users, Volleyball, Rainbow } from "lucide-react";
-import DonationImpact from "../donate/DonationImpact";
+"use client";
 
-export default function AboutPage() {
-  return (
-    <div className="bg-secondary">
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-primary text-4xl font-bold mb-12">
-          About J9 Legacy Foundation
-        </h1>
+import { useState, useEffect } from "react";
+import { getAboutPageData } from "./account";
+import { AboutPageContent } from "@/lib/types/about";
+import { defaultAboutPageContent } from "@/lib/defaults/aboutDefaults";
+import AboutPage from "./AboutPageContent";
 
-        <div className="flex flex-col lg:flex-row gap-6 mb-6">
-          <div className="lg:w-1/2">
-            <div className="border rounded-md bg-white shadow-lg p-6">
-              <h2 className="text-xl text-accent font-semibold mb-4">
-                Our Mission
-              </h2>
-              <p className="text-lg text-accent mb-6">
-                {`The J9 Legacy Foundation was started to honor the memory of our
-              son, brother, cousin, and friend, Jacob Eshenbaugh, who passed
-              away on May 23, 2024. As a child, summer camps were an important
-              and impactful part of Jacob's life, so we thought it was fitting
-              to try and help children experience something that was so
-              meaningful to him.`}
-                <br />
-                <br />
-                {`The Foundation is dedicated to empowering youth
-              and families by providing financial support for camp attendance
-              and organizing community events that enhance access to educational
-              and recreational opportunities. We believe that every child
-              deserves the chance to grow, learn, and explore in a nurturing and
-              supportive environment.`}
-                <br />
-                <br />
-                {`Through our efforts, we honor Jacob's
-              legacy by opening doors to opportunities that create cherished
-              memories for children in need. Together, we strive to transform
-              lives and make a lasting impact, one experience at a time.`}
-              </p>
+export default function About() {
+  const [aboutPageContent, setAboutPageContent] =
+    useState<AboutPageContent | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAboutPageData();
+        setAboutPageContent(data.aboutPageContent);
+      } catch (error) {
+        console.error("Failed to fetch about page data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="bg-secondary">
+        <div className="container mx-auto px-4 py-12">
+          <div className="flex items-center justify-center">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+              <p className="text-gray-600">Loading...</p>
             </div>
-          </div>
-          <div className="relative lg:w-1/2 w-full aspect-[16/9] rounded-md shadow-lg overflow-hidden">
-            <Image
-              src="/j9.png"
-              alt="J9 Legacy Foundation Team"
-              fill
-              className="object-cover"
-            />
-          </div>
-        </div>
-        <div className="border rounded-md bg-white shadow-lg p-6">
-          <h2 className="text-xl text-accent font-semibold mb-4">Our Impact</h2>
-          <p className="text-lg text-accent mb-4">
-            Through our initiatives, we aim to:
-          </p>
-          <ul className="flex flex-col lg:flex-row mx-auto gap-6 list-inside text-accent">
-            <li className="rounded-md bg-orange-100 p-4">
-              <Tent className="mb-1"></Tent>
-              Sponsor youth and families to attend camps
-            </li>
-            <li className="rounded-md bg-orange-100 p-4">
-              <Users className="mb-1"></Users>
-              Host community events supporting educational access
-            </li>
-            <li className="rounded-md bg-orange-100 p-4">
-              <Volleyball className="mb-1"></Volleyball>
-              Create opportunities for recreational activities
-            </li>
-            <li className="rounded-md bg-orange-100 p-4">
-              <Rainbow className="mb-1"></Rainbow>
-              Foster personal growth and development
-            </li>
-          </ul>
-          <hr className="border-t border-secondary my-4" />
-
-          <div className="mx-auto my-10">
-            <p className="mx-auto text-xl text-accent text-center font-semibold">
-              Join us in our mission to create lasting positive impacts on the
-              lives of youth and families in our community.
-            </p>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  if (!aboutPageContent) {
+    return <AboutPage aboutPageContent={defaultAboutPageContent} />;
+  }
+
+  return <AboutPage aboutPageContent={aboutPageContent} />;
 }

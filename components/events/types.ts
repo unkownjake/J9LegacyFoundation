@@ -11,4 +11,9 @@ export interface Event {
   modalImageUrl: string;
   additionalInfo: string;
   src: string;
+  // New fields for enhanced event management
+  actionType?: "registration" | "rsvp" | "none"; // For upcoming events
+  isPastEvent?: boolean;
+  photoAlbumUrl?: string; // For past events - link to view photos
+  thankYouMessage?: string; // Custom thank you message for past events
 }

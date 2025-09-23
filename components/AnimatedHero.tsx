@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 
-function AnimatedHero() {
+interface AnimatedHeroProps {
+  title: string;
+  subtitle?: string;
+  description: string;
+}
+
+function AnimatedHero({ title, subtitle, description }: AnimatedHeroProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   // Trigger animation when the component loads
@@ -19,7 +25,8 @@ function AnimatedHero() {
           isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-24"
         }`}
       >
-        Welcome to <span className="block pt-2">J9 Legacy Foundation</span>
+        {title}
+        {subtitle && <span className="block pt-2">{subtitle}</span>}
       </h1>
 
       <p
@@ -29,8 +36,7 @@ function AnimatedHero() {
             : "opacity-0 translate-x-24"
         }`}
       >
-        Empowering youth and families to attend camps through community events
-        that support access to educational and recreational opportunities.
+        {description}
       </p>
     </div>
   );

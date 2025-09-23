@@ -1,17 +1,36 @@
 [
-    {
-      "id": 1,
-      "slug": "skate-fundraiser",
-      "title": "J9 Legacy Skate Fundraiser",
-      "date": "May 10, 2025",
-      "time": "4:00 PM - 7:00 PM",
-      "location": "Lynwood Bowl & Skate",
-      "address": "6210 200TH ST SW Lynwood, WA 98036",
-      "description": "Join us for a fun-filled evening of skating!",
-      "cardImageUrl": "/rollerskates.jpg",
-      "modalImageUrl": "/skate-flyer.png",
-      "additionalInfo": "All ages welcome. Ticket purchases will be made at the venue, but please RSVP below for us to get a gauge for the number of attendees.",
-      "src": "https://forms.gle/KdRtoad9YsEibRNG6"
-    }
-  ]
+  {
+    "id": 1,
+    "slug": "skate-fundraiser",
+    "title": "J9 Legacy Skate Fundraiser",
+    "date": "May 10, 2025",
+    "time": "4:00 PM - 7:00 PM",
+    "location": "Lynwood Bowl & Skate",
+    "address": "6210 200TH ST SW Lynwood, WA 98036",
+    "description": "Join us for a fun-filled evening of skating!",
+    "cardImageUrl": "/rollerskates.jpg",
+    "modalImageUrl": "/skate-flyer.png",
+    "additionalInfo": "All ages welcome. Ticket purchases will be made at the venue, but please RSVP below for us to get a gauge for the number of attendees.",
+    "src": "https://forms.gle/KdRtoad9YsEibRNG6",
+    "actionType": "rsvp",
+    "isPastEvent": false
+  },
+  {
+    "id": 2,
+    "slug": "memorial-lacrosse-jamboree",
+    "title": "Memorial 3 by Lacrosse Jamboree",
+    "date": "November 30, 2024",
+    "time": "9:00 AM - 3:00 PM",
+    "location": "Kellogg Middle School",
+    "address": "16045 25th AVE NE, Shoreline, WA 98155",
+    "description": "3by lacrosse is fast paced, free flowing game which heavily emphasizes skill and quick decision making under pressure. It's a finesse and skill game, and not a strength and power game.",
+    "cardImageUrl": "/3by.JPG",
+    "modalImageUrl": "/3by.JPG",
+    "additionalInfo": "The foundation hosted a 3 by jamboree on Saturday November 30th, 2024, in honor of Jacob Eshenbaugh, who passed away on May 23, 2024.",
+    "src": "https://drive.google.com/drive/folders/1JUiGQdtvx7Wwz__n-b51-E1xtgSJRhhc?usp=sharing",
+    "isPastEvent": true,
+    "photoAlbumUrl": "https://drive.google.com/drive/folders/1JUiGQdtvx7Wwz__n-b51-E1xtgSJRhhc?usp=sharing",
+    "thankYouMessage": "Thank you to all the young athletes who participated in this special event honoring Jacob's memory. Your energy and sportsmanship made the day truly memorable!"
+  }
+]
   

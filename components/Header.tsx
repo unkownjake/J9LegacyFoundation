@@ -30,6 +30,8 @@ export default function Header() {
     { href: "/", text: "Home" },
     { href: "/about", text: "About" },
     { href: "/events", text: "Events" },
+    { href: "/sponsorship-application", text: "Sponsorship Application" },
+    { href: "/faq", text: "FAQ" },
     { href: "/donate", text: "Donate" },
   ];
 
