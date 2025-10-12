@@ -479,20 +479,16 @@ export default function EventPage() {
                         )}
 
                         <button
-                          onClick={() => setShowRegistrationForm(true)}
+                          onClick={() => {
+                            window.open(
+                              "https://www.unkownjake.com/about-5-1",
+                              "_blank"
+                            );
+                          }}
                           className="w-full bg-primary text-white py-3 px-4 rounded-lg hover:bg-primary-darker transition-colors font-semibold"
                         >
-                          {event.registration.type === "required"
-                            ? "Register Now"
-                            : "RSVP"}
+                          {"Register Here"}
                         </button>
-
-                        {event.registration.type === "required" &&
-                          event.registration.formSchema && (
-                            <p className="text-sm text-gray-600 text-center">
-                              Registration form will open in a new window
-                            </p>
-                          )}
                       </div>
                     ) : (
                       <div className="text-center">
@@ -715,7 +711,7 @@ export default function EventPage() {
         ) : null}
 
         {/* Registration Form Dialog */}
-        <RegistrationForm
+        {/* <RegistrationForm
           event={event}
           onSave={handleRegistrationSubmit}
           onCancel={() => {
@@ -726,7 +722,7 @@ export default function EventPage() {
           isAdmin={false}
           showDialog={showRegistrationForm}
           dialogTitle={event.registration.type === "rsvp" ? "RSVP" : "Register"}
-        />
+        /> */}
 
         {/* Registration Success Message */}
         {registrationSuccess && (

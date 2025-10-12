@@ -9,17 +9,7 @@ import {
   ParticipantRegistration,
   validateEventResponse,
 } from "@/lib/types/events";
-import {
-  X,
-  User,
-  Mail,
-  Phone,
-  Calendar,
-  FileText,
-  Check,
-  Edit,
-  Trash2,
-} from "lucide-react";
+import { X, User, Mail, Phone, Calendar, Edit, Trash2 } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -452,7 +442,7 @@ export default function RegistrationForm({
       case "date":
         return <Calendar className="h-4 w-4" />;
       default:
-        return <User className="h-4 w-4" />;
+        return null;
     }
   };
 
@@ -467,11 +457,15 @@ export default function RegistrationForm({
       handleParticipantChange(participantIndex, fieldName, newValue);
     };
 
+    const icon: React.ReactNode | null = getFieldIcon(field.type);
+
     return (
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          {getFieldIcon(field.type)}
-        </div>
+        {icon && (
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            {icon}
+          </div>
+        )}
 
         {field.type === "string" && (
           <input
@@ -640,6 +634,7 @@ export default function RegistrationForm({
 
   const renderField = (fieldName: string, field: FormField) => {
     const hasError = !!errors[fieldName];
+    const icon: React.ReactNode | null = getFieldIcon(field.type);
 
     return (
       <div key={fieldName} className="space-y-2">
@@ -649,9 +644,11 @@ export default function RegistrationForm({
         </label>
 
         <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            {getFieldIcon(field.type)}
-          </div>
+          {icon && (
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              {icon}
+            </div>
+          )}
 
           {field.type === "string" && (
             <input
@@ -976,7 +973,7 @@ export default function RegistrationForm({
                               className="p-1 text-green-600 hover:text-green-800"
                               title="Confirm participant"
                             >
-                              <Check className="h-4 w-4" />
+                              Confirm
                             </button>
                             {participants.length >
                               (event.registration.formSchema?.participantSchema
