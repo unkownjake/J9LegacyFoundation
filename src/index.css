@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* J9 Legacy Foundation design tokens — ported from the existing site. All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    /* Brand navy used for body copy, matching the live j9legacy.org site. */
+    --foreground: 213 44% 24%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* Brand orange */
+    --primary: 32 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-lighter: 27 100% 75%;
+    --primary-darker: 24 100% 37%;
+
+    --secondary: 0 0% 94%;
+    --secondary-foreground: 0 0% 9%;
+
+    /* Soft peach used on link cards / stat tiles, matching the live j9legacy.org site. */
+    --peach: 30 100% 92%;
+    --peach-foreground: 213 44% 24%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    /* Brand navy */
+    --accent: 213 44% 24%;
+    --accent-lighter: 213 44% 64%;
+    --accent-foreground: 240 5% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 32 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 32 100% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 32 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background-color: hsl(0 0% 98%);
+  }
+  .rich-text a {
+    @apply text-primary underline underline-offset-2 hover:text-primary-darker;
+  }
+  .rich-text p { @apply mb-3 last:mb-0; }
+  .rich-text strong, .rich-text b { @apply font-semibold; }
+}
+
+@layer components {
+  /* Tile = white card matching the live j9legacy.org site: subtle shadow, 8px radius. */
+  .tile {
+    @apply bg-card rounded-lg overflow-hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+}
+
