@@ -80,6 +80,7 @@ function SignInForm() {
 function InviteSignUp() {
   const { isLoaded, signUp, setActive } = useSignUp();
   const { recheckAdmin } = useAuth();
+  const { signOut } = useClerk();
   const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
@@ -93,7 +94,10 @@ function InviteSignUp() {
   // Attempt ticket sign-up immediately on load
   useEffect(() => {
     if (!isLoaded || !ticket) return;
-    signUp.create({ strategy: "ticket", ticket })
+    // Sign out any existing session first — Clerk rejects ticket sign-up if a session is active
+    signOut()
+      .catch(() => {})
+      .then(() => signUp.create({ strategy: "ticket", ticket }))
       .then(async (result) => {
         if (result.status === "complete") {
           await setActive({ session: result.createdSessionId });
@@ -112,7 +116,7 @@ function InviteSignUp() {
         const msg = err?.errors?.[0]?.longMessage ?? "Invalid or expired invitation link.";
         setError(msg);
       });
-  }, [isLoaded]);
+  }, [isLoaded, ticket]);
 
   async function handleSetPassword(e: React.FormEvent) {
     e.preventDefault();
