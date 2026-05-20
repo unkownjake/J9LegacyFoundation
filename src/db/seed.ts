@@ -1,5 +1,5 @@
 /**
- * Seed script — imports Supabase data into Neon.
+ * Seed script — initial data for local development.
  * Run with: npx tsx src/db/seed.ts
  *
  * Set CLERK_ADMIN_USER_ID before running:
@@ -31,9 +31,7 @@ async function seed() {
       location: "68 Hopedale Street\nBoston, Massachusetts 02163",
       startsAt: new Date("2026-05-12T22:06:00Z"),
       endsAt: new Date("2026-05-13T00:06:00Z"),
-      // NOTE: Supabase storage URL — update to Vercel Blob URL in Phase 13
-      heroImage:
-        "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/events/04861c8d-34ec-4df0-938d-62ba3405578c-1777759596512.png",
+      heroImage: null,
       gallery: [],
       published: true,
       sortOrder: 0,
@@ -65,16 +63,7 @@ async function seed() {
       organizerName: "Kris Wong",
       organizerEmail: "kwong@j9legacy.org",
       organizerPhone: "123456677",
-      // NOTE: Supabase storage URL — update to Vercel Blob URL in Phase 13
-      documents: [
-        {
-          id: "doc_ixdwnwm8",
-          url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-documents/9165d2a0-fce5-465f-8c6b-98520ccfdceb.pdf",
-          mime: "application/pdf",
-          name: "Flyer",
-          size: 286869,
-        },
-      ],
+      documents: [],
       createdAt: new Date("2026-05-02T22:05:40.769Z"),
       updatedAt: new Date("2026-05-10T21:47:07.384Z"),
     },
@@ -96,7 +85,7 @@ async function seed() {
             icon: "info",
             link: "/about",
             image:
-              "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/home-cards/bbee1e42-cce8-4227-91a4-86977b599750.jpeg",
+              "",
             title: "About Us",
             description: "Learn about our mission and the impact we are making in the community.",
             verticalPosition: "center",
@@ -106,7 +95,7 @@ async function seed() {
             icon: "calendar",
             link: "/events",
             image:
-              "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/home-cards/872f5f9e-70b1-4472-b439-7744a314f014.jpg",
+              "",
             title: "Our Events",
             description: "Discover upcoming events and how you can get involved.",
             verticalPosition: "center",
@@ -116,7 +105,7 @@ async function seed() {
             icon: "heart",
             link: "/donate",
             image:
-              "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/home-cards/a733ceab-0ab7-4606-80b3-ae1b93ce2353.jpeg",
+              "",
             title: "Support Our Cause",
             description: "Find out how you can contribute to our mission and make a difference.",
             verticalPosition: "20%",
@@ -297,7 +286,7 @@ async function seed() {
                 {
                   id: "i-mxun67v",
                   alt: "J9 Legacy Foundation Team",
-                  url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about/ebcc5ce3-1487-4cce-8f4d-0837d362693b.png",
+                  url: "",
                   kind: "image",
                   aspect: "4/3",
                   verticalPosition: "center",
@@ -338,8 +327,8 @@ async function seed() {
       content: {
         rows: [
           { id: "r-6mmwwr8", cells: [[{ id: "h-bjz5e8j", kind: "heading", text: "Supporting Educational Access", level: 2, style: "plain" }, { id: "t-0qpqsyh", body: "The J9 Legacy Foundation is committed to empowering youth and families through meaningful community events that provide greater access to educational and recreational opportunities. Each gathering serves as a chance to build connections, celebrate Jacob's legacy, and ensure that all participants can engage in enriching experiences.", kind: "text", style: "plain", title: "Supporting Educational Access" }]], columns: 1 },
-          { id: "r-82u3rjm", cells: [[{ id: "h-oe712fu", kind: "heading", text: "Annual Events", level: 2, style: "plain" }, { id: "ic-rkd7068", body: "", kind: "infoCard", title: "Unkown Jake Lacrosse Jamboree", bodyHtml: "<p>A community-centered lacrosse event that welcomes players of all backgrounds and experience levels. Whether seasoned athletes, casual players, or first-timers, participants get to enjoy a day of fun, teamwork, and sportsmanship while celebrating Jacob's passion for the game.</p>" }, { id: "ic-w1sg9ny", body: "The Foundation's annual fundraiser, bringing people together through the shared joy of skating. This event features an auction spotlighting small local businesses, an exciting slide competition, and—for the first time coming next year—a raffle to further engage participants while raising funds for scholarships and youth programs. The fundraiser is a celebration of movement, connection, and the generosity of a community dedicated to keeping Jacob's legacy alive.", kind: "infoCard", title: "Rollin' with Jacob Skate Fundraiser" }], [{ id: "i-ihexgsv", alt: "Community events", url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about-community-events/a3569901-d1b5-4b7e-bab4-f01151b31dfa.jpeg", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
-          { id: "r-l038sx7", cells: [[{ id: "i-1d55ft1", alt: "Community events photo", url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about-community-events/f406d5e7-8079-4312-a9ff-781d7311a9ef.jpeg", kind: "image", aspect: "4/3", verticalPosition: "center" }], [{ id: "h-j1x3vic", kind: "heading", text: "Ongoing Initiatives", level: 2, style: "plain" }, { id: "ic-e7sml61", body: "", kind: "infoCard", title: "Pop-up Fundraisers", bodyHtml: "<p>In partnership with local restaurants, bakeries, and small businesses, the Foundation is looking to host mini fundraising events throughout the year. These gatherings not only raise awareness and support scholarship opportunities, but also provide a chance for community members to come together in a relaxed, welcoming atmosphere.</p>" }, { id: "ic-tzwfrmq", body: "", kind: "infoCard", title: "Expanding Educational & Recreational Access", bodyHtml: "<p>Through our community events and fundraising efforts, we continue to grow opportunities for youth and families to engage in activities that promote learning, confidence, and joy. Whether through camps, sports, or creative initiatives, every program ensures that barriers to participation are reduced and that families feel supported and included.</p>" }]], columns: 2 },
+          { id: "r-82u3rjm", cells: [[{ id: "h-oe712fu", kind: "heading", text: "Annual Events", level: 2, style: "plain" }, { id: "ic-rkd7068", body: "", kind: "infoCard", title: "Unkown Jake Lacrosse Jamboree", bodyHtml: "<p>A community-centered lacrosse event that welcomes players of all backgrounds and experience levels. Whether seasoned athletes, casual players, or first-timers, participants get to enjoy a day of fun, teamwork, and sportsmanship while celebrating Jacob's passion for the game.</p>" }, { id: "ic-w1sg9ny", body: "The Foundation's annual fundraiser, bringing people together through the shared joy of skating. This event features an auction spotlighting small local businesses, an exciting slide competition, and—for the first time coming next year—a raffle to further engage participants while raising funds for scholarships and youth programs. The fundraiser is a celebration of movement, connection, and the generosity of a community dedicated to keeping Jacob's legacy alive.", kind: "infoCard", title: "Rollin' with Jacob Skate Fundraiser" }], [{ id: "i-ihexgsv", alt: "Community events", url: "", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
+          { id: "r-l038sx7", cells: [[{ id: "i-1d55ft1", alt: "Community events photo", url: "", kind: "image", aspect: "4/3", verticalPosition: "center" }], [{ id: "h-j1x3vic", kind: "heading", text: "Ongoing Initiatives", level: 2, style: "plain" }, { id: "ic-e7sml61", body: "", kind: "infoCard", title: "Pop-up Fundraisers", bodyHtml: "<p>In partnership with local restaurants, bakeries, and small businesses, the Foundation is looking to host mini fundraising events throughout the year. These gatherings not only raise awareness and support scholarship opportunities, but also provide a chance for community members to come together in a relaxed, welcoming atmosphere.</p>" }, { id: "ic-tzwfrmq", body: "", kind: "infoCard", title: "Expanding Educational & Recreational Access", bodyHtml: "<p>Through our community events and fundraising efforts, we continue to grow opportunities for youth and families to engage in activities that promote learning, confidence, and joy. Whether through camps, sports, or creative initiatives, every program ensures that barriers to participation are reduced and that families feel supported and included.</p>" }]], columns: 2 },
           { id: "r-0r56ww4", cells: [[{ id: "t-oa2yxvo", body: "", kind: "text", style: "plain", title: "", bodyHtml: "<p>Each event is more than just a gathering — it's a chance to foster friendships, build confidence, and create lasting memories. Through these experiences, Jacob's spirit of adventure, kindness, and inclusivity lives on in every moment of joy shared by the community.</p>" }]], columns: 1 },
         ],
         intro: "",
@@ -354,7 +343,7 @@ async function seed() {
       content: {
         rows: [
           { id: "r-w3gvtnr", cells: [[{ id: "t-39kswn6", body: "", kind: "text", style: "plain", title: "", bodyHtml: "<p>Access to recreational activities is more than just fun — it's a entryway to personal growth, community connection, and lifelong memories. One of J9 Legacy Foundation's goal is to allow youth and families, the enjoyment and enrichment that recreational opportunities provide.<br><br>Through our current and future scholarships, we aim to help youth and their families participate in activities that may have previously been out of reach. These programs offer not only moments of excitement but also opportunities for skill-building, confidence-building, and social engagement.</p>" }]], columns: 1 },
-          { id: "r-wwvcmvq", cells: [[{ id: "h-nf8fj7n", kind: "heading", text: "Current Recreational Initiatives", level: 2, style: "plain" }, { id: "ic-ra6yaxv", body: "Sponsoring around 70 second- through fifth-graders from the local Boys & Girls Club for a skating experience, giving them the chance to enjoy movement, teamwork, and the thrill of trying something new.", kind: "infoCard", title: "Expanding Recreational Access" }, { id: "ic-gdv9098", body: "Creating pathways for youth to explore activities like lacrosse, roller skating, and other recreational programs that encourage physical activity and personal development.", kind: "infoCard", title: "Broadening Sports Participation" }], [{ id: "i-3ye5scf", alt: "Recreational activities", url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about-recreational-activities/af9eda89-5d37-46d1-9222-7113e651d266.jpeg", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
+          { id: "r-wwvcmvq", cells: [[{ id: "h-nf8fj7n", kind: "heading", text: "Current Recreational Initiatives", level: 2, style: "plain" }, { id: "ic-ra6yaxv", body: "Sponsoring around 70 second- through fifth-graders from the local Boys & Girls Club for a skating experience, giving them the chance to enjoy movement, teamwork, and the thrill of trying something new.", kind: "infoCard", title: "Expanding Recreational Access" }, { id: "ic-gdv9098", body: "Creating pathways for youth to explore activities like lacrosse, roller skating, and other recreational programs that encourage physical activity and personal development.", kind: "infoCard", title: "Broadening Sports Participation" }], [{ id: "i-3ye5scf", alt: "Recreational activities", url: "", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
           { id: "r-52ra3rf", cells: [[{ id: "t-djl7lrh", body: "Looking ahead, the Foundation remains dedicated to growing access to enriching recreational opportunities, ensuring that more youth and families can benefit from the transformative power of play, movement, and connection.", kind: "text", style: "plain", title: "" }]], columns: 1 },
         ],
         intro: "",
@@ -368,9 +357,9 @@ async function seed() {
       slug: "about-camp-sponsorship",
       content: {
         rows: [
-          { id: "r-t3tx3p7", cells: [[{ id: "t-nay19qk", body: "Summer camps played a pivotal role in Jacob's childhood, shaping experiences that remained deeply meaningful to him. The friendships, confidence-building moments, and sense of adventure that camps provided were cornerstones of his journey, leaving lasting impressions that influenced his life.\n\nTo honor his legacy, the J9 Legacy Foundation is committed to ensuring that youth and families, regardless of financial barriers, have access to these transformative experiences. Through camp sponsorships, our goal is to help young people discover new skills, build self-confidence, and form lasting friendships in an environment that fosters growth and joy.", kind: "text", style: "plain", title: "Why Camps Sponsorships?" }], [{ id: "i-q3bl9id", alt: "Camp sponsorship", url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about-camp-sponsorship/49aba1c4-f4a7-47fe-92f3-7f47d25577e5.jpeg", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
+          { id: "r-t3tx3p7", cells: [[{ id: "t-nay19qk", body: "Summer camps played a pivotal role in Jacob's childhood, shaping experiences that remained deeply meaningful to him. The friendships, confidence-building moments, and sense of adventure that camps provided were cornerstones of his journey, leaving lasting impressions that influenced his life.\n\nTo honor his legacy, the J9 Legacy Foundation is committed to ensuring that youth and families, regardless of financial barriers, have access to these transformative experiences. Through camp sponsorships, our goal is to help young people discover new skills, build self-confidence, and form lasting friendships in an environment that fosters growth and joy.", kind: "text", style: "plain", title: "Why Camps Sponsorships?" }], [{ id: "i-q3bl9id", alt: "Camp sponsorship", url: "", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
           { id: "r-ddlqlcf", cells: [[{ id: "h-h1uaqn6", kind: "heading", text: "Current Camp Sponsorships", level: 2 }, { id: "ic-w93bp6r", body: "Sponsoring a ninth-grade girl to attend a weeklong goalie lacrosse camp, providing her with specialized coaching and a chance to build skills, resilience, and teamwork in a sport Jacob loved.", kind: "infoCard", link: "", title: "Lacrosse Camp" }, { id: "ic-ok5tadz", body: "Partnering with organizations to identify families in need of scholarships, ensuring that adopted children and their families can attend a camp designed to support connection, growth, and shared experiences.", kind: "infoCard", link: "https://www.adoptionfamilycamp.org/", title: "Adoption Family Camp" }, { id: "ic-ahwupev", body: "Working with organizations to help youth access roller skating camp, where they can experience the freedom and joy of movement while building confidence in a supportive environment.", kind: "infoCard", title: "Roller Skating Camp" }, { id: "ic-5qkf9u4", body: "Sponsoring two youth for a weeklong summer camp experience, where they can explore new activities, make lifelong friends, and enjoy the simple pleasures of summer adventures.", kind: "infoCard", link: "https://www.summerfuncamp.net/", title: "Summer Fun Camp" }]], columns: 1 },
-          { id: "r-g98y2yc", cells: [[{ id: "i-p9g7alk", alt: "Image", url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about-camp-sponsorship/1cfc994b-5cf7-4c2b-a8bd-ec049d33b73d.jpeg", kind: "image", aspect: "4/3", verticalPosition: "center" }], [{ id: "t-esm8wbk", body: "", kind: "text", style: "boxed", title: "", bodyHtml: "<p>Beyond the activities themselves, these camps give youth and families moments of joy, personal development, and belonging, ensuring that Jacob's legacy lives on through each shared experience, each new friendship, and each spark of confidence gained along the way.</p>" }, { id: "btn-aj0yesc", kind: "button", link: "/sponsorship-application", align: "left", label: "Apply for Sponsorship", newTab: false, variant: "primary" }]], columns: 2 },
+          { id: "r-g98y2yc", cells: [[{ id: "i-p9g7alk", alt: "Image", url: "", kind: "image", aspect: "4/3", verticalPosition: "center" }], [{ id: "t-esm8wbk", body: "", kind: "text", style: "boxed", title: "", bodyHtml: "<p>Beyond the activities themselves, these camps give youth and families moments of joy, personal development, and belonging, ensuring that Jacob's legacy lives on through each shared experience, each new friendship, and each spark of confidence gained along the way.</p>" }, { id: "btn-aj0yesc", kind: "button", link: "/sponsorship-application", align: "left", label: "Apply for Sponsorship", newTab: false, variant: "primary" }]], columns: 2 },
         ],
         intro: "",
         title: "Youth and Families Camp Sponsorships",
@@ -384,7 +373,7 @@ async function seed() {
       content: {
         rows: [
           { id: "r-4xvrk6p", cells: [[{ id: "t-zuw8cx2", body: "", kind: "text", align: "center", title: "", bodyHtml: "<p>Every event and sponsorship builds confidence, nurtures friendships, and creates lasting memories—all ensuring Jacob's legacy thrives through moments of joy.<br></p>" }]], columns: 1 },
-          { id: "r-aoheyu1", cells: [[{ id: "h-av8h2m5", kind: "heading", text: "Building Confidence Through New Experiences", level: 3, style: "plain" }, { id: "t-td6b22z", body: "", kind: "text", style: "plain", title: "Building Confidence Through New Experiences", bodyHtml: "<p>Whether stepping onto the field for their first lacrosse game, learning how to surf or lacing up skates for a community event, youth gain valuable skills that strengthen resilience, independence, and self-assurance. Trying something new in a supportive environment helps them develop courage and a sense of accomplishment.</p>" }, { id: "h-ygkm1i3", kind: "heading", text: "Creating Opportunities for Friendship and Belonging", level: 3, style: "plain" }, { id: "t-7oyruzh", body: "", kind: "text", style: "plain", title: "Creating Opportunities for Friendship and Belonging", bodyHtml: "<p>By bringing youth and families together, we foster an environment where friendships flourish. Camps and events provide safe spaces for connection, allowing participants to bond over shared experiences, form relationships, and feel embraced by a community that supports them.</p>" }, { id: "h-mmnnflu", kind: "heading", text: "Cultivating Joy and Lasting Memories", level: 3, style: "plain" }, { id: "t-2psdgv1", body: "Each camp, jamboree, and fundraiser is more than just an activity—it's an opportunity to experience joy, laughter, and the simple thrill of play. These moments stay with youth and families, becoming treasured memories that carry Jacob's legacy forward in their lives.", kind: "text", style: "plain", title: "Cultivating Joy and Lasting Memories" }], [{ id: "i-e80n8or", alt: "Personal growth", url: "https://aizlwyatlqgavgbwwmlv.supabase.co/storage/v1/object/public/site-images/about-personal-growth/b163fafd-1b99-44bc-bf51-05886d25a97d.jpeg", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
+          { id: "r-aoheyu1", cells: [[{ id: "h-av8h2m5", kind: "heading", text: "Building Confidence Through New Experiences", level: 3, style: "plain" }, { id: "t-td6b22z", body: "", kind: "text", style: "plain", title: "Building Confidence Through New Experiences", bodyHtml: "<p>Whether stepping onto the field for their first lacrosse game, learning how to surf or lacing up skates for a community event, youth gain valuable skills that strengthen resilience, independence, and self-assurance. Trying something new in a supportive environment helps them develop courage and a sense of accomplishment.</p>" }, { id: "h-ygkm1i3", kind: "heading", text: "Creating Opportunities for Friendship and Belonging", level: 3, style: "plain" }, { id: "t-7oyruzh", body: "", kind: "text", style: "plain", title: "Creating Opportunities for Friendship and Belonging", bodyHtml: "<p>By bringing youth and families together, we foster an environment where friendships flourish. Camps and events provide safe spaces for connection, allowing participants to bond over shared experiences, form relationships, and feel embraced by a community that supports them.</p>" }, { id: "h-mmnnflu", kind: "heading", text: "Cultivating Joy and Lasting Memories", level: 3, style: "plain" }, { id: "t-2psdgv1", body: "Each camp, jamboree, and fundraiser is more than just an activity—it's an opportunity to experience joy, laughter, and the simple thrill of play. These moments stay with youth and families, becoming treasured memories that carry Jacob's legacy forward in their lives.", kind: "text", style: "plain", title: "Cultivating Joy and Lasting Memories" }], [{ id: "i-e80n8or", alt: "Personal growth", url: "", kind: "image", aspect: "4/3", verticalPosition: "center" }]], columns: 2 },
           { id: "r-je69d1f", cells: [[{ id: "t-ad6lak0", body: "", kind: "text", align: "center", title: "", bodyHtml: "<p>Through these experiences, the Foundation continues to honor Jacob's spirit, ensuring his passion for community, connection, and adventure lives on in every child who finds joy, strength, and friendship through our programs.</p>" }]], columns: 1 },
         ],
         intro: "\n",

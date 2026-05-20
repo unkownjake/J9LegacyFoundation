@@ -3,6 +3,7 @@ import { createClerkClient } from "@clerk/backend";
 import { db, adminNotificationPrefs } from "./db";
 import { eq } from "drizzle-orm";
 
+// NOTE: email-logo.png is required — embedded in all transactional emails. Do not delete from Vercel Blob.
 const LOGO_URL =
   "https://oqscstxo6osyjlsa.public.blob.vercel-storage.com/site-images/email-logo.png";
 
@@ -68,15 +69,18 @@ export function renderTemplate(
     const name = escape(data.donorName || "Friend");
     const amount = money(data.amount);
     const fees = Number(data.feesCovered) > 0 ? money(data.feesCovered) : null;
-    const subject = `Thank you for your ${amount} donation to J9 Legacy`;
+    const date = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    const subject = "Thank You for Your Donation to J9 Legacy Foundation";
     const html = wrap(
-      "Thank you for your donation 💙",
+      "Thank you for your donation",
       `<p style="margin:0 0 12px;font-size:15px;line-height:1.6;">Dear ${name},</p>
-       <p style="margin:0 0 12px;font-size:15px;line-height:1.6;">Your generous donation of <strong>${amount}</strong> has been received. Every contribution directly supports our mission to honor J9's legacy and uplift our community.</p>
+       <p style="margin:0 0 12px;font-size:15px;line-height:1.6;">Thank you for your generous donation of <strong>${amount}</strong> to the J9 Legacy Foundation on ${escape(date)}.</p>
        ${fees ? `<p style="margin:0 0 12px;font-size:14px;color:#555;">Including ${fees} to cover processing fees — thank you for that extra generosity.</p>` : ""}
-       <p style="margin:16px 0 0;font-size:15px;line-height:1.6;">With gratitude,<br/>The J9 Legacy Foundation team</p>`,
+       <p style="margin:0 0 12px;font-size:15px;line-height:1.6;">The J9 Legacy Foundation was started to honor the memory of Jacob Eshenbaugh, who passed away in May of 2024. As a child, summer camps were an important and impactful part of his life, therefore, to continue his legacy the Foundation is working to help youth, and their families experience things that were so meaningful to him. Your support helps the Foundation empower youth and families by providing financial support for camp attendance and organizing community events that enhance access to educational and recreational opportunities.</p>
+       <p style="margin:0 0 12px;font-size:15px;line-height:1.6;">No goods or services were provided in exchange, making your contribution fully tax deductible. Thank you for your support in keeping Jacob's spirit alive and helping kids and families in need.</p>
+       <p style="margin:16px 0 0;font-size:15px;line-height:1.6;">With gratitude,<br/>Naomi Maxey<br/>President</p>`,
     );
-    const text = `Dear ${data.donorName || "Friend"},\n\nYour donation of ${amount} has been received. Thank you for supporting J9 Legacy Foundation.\n\nWith gratitude,\nThe J9 Legacy Foundation team`;
+    const text = `Dear ${data.donorName || "Friend"},\n\nThank you for your generous donation of ${amount} to the J9 Legacy Foundation on ${date}.\n\nThe J9 Legacy Foundation was started to honor the memory of Jacob Eshenbaugh, who passed away in May of 2024. As a child, summer camps were an important and impactful part of his life, therefore, to continue his legacy the Foundation is working to help youth, and their families experience things that were so meaningful to him. Your support helps the Foundation empower youth and families by providing financial support for camp attendance and organizing community events that enhance access to educational and recreational opportunities.\n\nNo goods or services were provided in exchange, making your contribution fully tax deductible. Thank you for your support in keeping Jacob's spirit alive and helping kids and families in need.\n\nWith gratitude,\nNaomi Maxey\nPresident`;
     return { subject, html, text };
   }
   if (template === "application_received") {

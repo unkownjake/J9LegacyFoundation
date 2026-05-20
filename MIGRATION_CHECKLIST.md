@@ -218,28 +218,28 @@ PAYPAL_CLIENT_SECRET=
 
 ### Public flows
 
-- [ ] Home page loads, CMS content renders
-- [ ] Events list and individual event pages load
-- [ ] Sponsorship application submits, essay uploads, confirmation email arrives
-- [ ] Event RSVP (free) submits, confirmation email arrives
-- [ ] Event registration (paid, PayPal sandbox) — create order, approve, capture, confirmation email arrives
-- [ ] Event manage page loads via magic token link, cancellation works, cancellation email arrives
-- [ ] Donation flow (PayPal sandbox) — create, capture, receipt modal, receipt email arrives
+- [x] Home page loads, CMS content renders
+- [x] Events list and individual event pages load
+- [x] Sponsorship application submits, essay uploads, confirmation email arrives
+- [x] Event RSVP (free) submits, confirmation email arrives
+- [x] Event registration (paid, PayPal sandbox) — create order, approve, capture, confirmation email arrives
+- [x] Event manage page loads via magic token link, cancellation works, cancellation email arrives
+- [x] Donation flow (PayPal sandbox) — create, capture, receipt modal, receipt email arrives
 
 ### Admin flows
 
-- [ ] Sign in via Clerk, redirected to admin dashboard
-- [ ] Test email sends from dashboard
-- [ ] Can create, edit, and delete events
-- [ ] Can edit CMS page content
-- [ ] Can view and update applications, download essay files
-- [ ] Can view donations, mark as thanked
-- [ ] Can view event registrations
-- [ ] Can invite admin by email, verify they sign up and appear in list
-- [ ] Can revoke admin (last admin cannot be removed)
-- [ ] Notification prefs toggle and save correctly in Account Settings
-- [ ] Image upload works, uploaded image appears on site
-- [ ] Document upload works, document appears in editor
+- [x] Sign in via Clerk, redirected to admin dashboard
+- [x] Test email sends from dashboard
+- [x] Can create, edit, and delete events
+- [x] Can edit CMS page content
+- [x] Can view and update applications, download essay files
+- [x] Can view donations, mark as thanked
+- [x] Can view event registrations
+- [x] Can invite admin by email, verify they sign up and appear in list
+- [x] Can revoke admin (last admin cannot be removed)
+- [x] Notification prefs toggle and save correctly in Account Settings
+- [x] Image upload works, uploaded image appears on site
+- [x] Document upload works, document appears in editor
 
 ---
 

@@ -5,6 +5,9 @@ import { db, pages, events } from "../_helpers/db";
 
 const MANAGED_PREFIXES = ["site-images/", "site-documents/"];
 
+// Files that are referenced in code (not in DB content) and must never be treated as orphans.
+const PINNED_PATHNAMES = new Set(["site-images/email-logo.png"]);
+
 async function listAllManagedBlobs() {
   const all: Awaited<ReturnType<typeof list>>["blobs"] = [];
   for (const prefix of MANAGED_PREFIXES) {
@@ -68,7 +71,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         listAllManagedBlobs(),
         getReferencedUrls(),
       ]);
-      const orphaned = blobs.filter((b) => !referenced.has(b.url));
+      const orphaned = blobs.filter((b) => !referenced.has(b.url) && !PINNED_PATHNAMES.has(b.pathname));
       return res.json({ orphaned });
     }
 
