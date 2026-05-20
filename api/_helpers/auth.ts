@@ -1,6 +1,6 @@
 import type { VercelRequest } from "@vercel/node";
 import { verifyToken } from "@clerk/backend";
-import { db, userRoles, eq, and } from "./db";
+import { db, userRoles, eq, and } from "./db.js";
 
 export async function getVerifiedUserId(req: VercelRequest): Promise<string | null> {
   const token = req.headers.authorization?.replace("Bearer ", "");

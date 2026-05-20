@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import { createClerkClient } from "@clerk/backend";
-import { db, adminNotificationPrefs } from "./db";
+import { db, adminNotificationPrefs } from "./db.js";
 import { eq } from "drizzle-orm";
 
 // NOTE: email-logo.png is required — embedded in all transactional emails. Do not delete from Vercel Blob.

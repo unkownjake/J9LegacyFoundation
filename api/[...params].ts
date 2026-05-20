@@ -1,10 +1,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { put, list, del, get } from "@vercel/blob";
 import { createClerkClient, verifyToken } from "@clerk/backend";
-import { requireAdmin, getVerifiedUserId } from "./_helpers/auth";
-import { db, events, eventSubmissions, applications, donations, pages, aboutPages, featureRoadmap, userRoles, adminNotificationPrefs, pendingAdminInvites, eq, and, sql } from "./_helpers/db";
+import { requireAdmin, getVerifiedUserId } from "./_helpers/auth.js";
+import { db, events, eventSubmissions, applications, donations, pages, aboutPages, featureRoadmap, userRoles, adminNotificationPrefs, pendingAdminInvites, eq, and, sql } from "./_helpers/db.js";
 import { asc, desc, isNull, ne } from "drizzle-orm";
-import { sendTransactional, renderTemplate, type EmailTemplate, type NotifyType } from "./_helpers/email";
+import { sendTransactional, renderTemplate, type EmailTemplate, type NotifyType } from "./_helpers/email.js";
 import { randomUUID } from "crypto";
 
 // Disable body parsing so upload routes can stream the raw request body.
