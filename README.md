@@ -1,3 +1,3 @@
-# Hello There
+# Welcome to your Lovable project
 
-This repo contains code for the J9 Legacy Foundation Website.
+TODO: Document your project here
