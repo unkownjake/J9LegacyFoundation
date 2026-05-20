@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Loader2 } from "lucide-react";
 import { getPageContent } from "@/lib/cms";
 import { listPublishedEvents } from "@/lib/events";
 import {
@@ -24,7 +24,7 @@ export default function EventsPage() {
   if (!content || !events) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }

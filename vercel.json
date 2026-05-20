@@ -1,5 +1,18 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+  "rewrites": [
+    { "source": "/api/events/:rest+", "destination": "/api/events" },
+    { "source": "/api/applications/:rest+", "destination": "/api/applications" },
+    { "source": "/api/admins/:rest+", "destination": "/api/admins" },
+    { "source": "/api/donations/:rest+", "destination": "/api/donations" },
+    { "source": "/api/event-submissions/:rest+", "destination": "/api/event-submissions" },
+    { "source": "/api/paypal/:rest+", "destination": "/api/paypal" },
+    { "source": "/api/pages/:rest+", "destination": "/api/pages" },
+    { "source": "/api/feature-roadmap/:rest+", "destination": "/api/feature-roadmap" },
+    { "source": "/api/about-pages/:rest+", "destination": "/api/about-pages" },
+    { "source": "/api/upload/:rest+", "destination": "/api/upload" },
+    { "source": "/api/admin/:rest+", "destination": "/api/admin" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
 }

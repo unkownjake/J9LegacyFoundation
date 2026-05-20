@@ -245,7 +245,7 @@ export default function EventSubmissionForm({ event, onClose, onSuccess }: Props
     setSubmitting(true);
     try {
       const headcountNum = headcountRequired ? Number(headcount) || 1 : 1;
-      const res = await fetch("/api/event-submission-create", {
+      const res = await fetch("/api/event-submissions/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -485,7 +485,7 @@ export default function EventSubmissionForm({ event, onClose, onSuccess }: Props
               }}
               onPaypalApprove={async (orderId) => {
                 if (!result) return;
-                const res = await fetch("/api/event-submission-capture", {
+                const res = await fetch("/api/event-submissions/capture", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({

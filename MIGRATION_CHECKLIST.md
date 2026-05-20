@@ -245,10 +245,10 @@ PAYPAL_CLIENT_SECRET=
 
 ## Phase 17 — Deploy
 
-- [ ] Push branch, open PR, verify Vercel preview deploy passes build
-- [ ] Remove Supabase + Firebase env vars from Vercel dashboard (production + preview)
+- [x] Push branch, open PR, verify Vercel preview deploy passes build
+- [x] Remove Supabase + Firebase env vars from Vercel dashboard (production + preview)
 - [ ] Run full Phase 16 QA checklist against the preview URL (not localhost)
-- [ ] Merge to `main`
+- [x] Merge to `main`
 - [ ] Verify production deploy succeeds
 - [ ] Set Clerk sign-up to "Restricted" (invite-only) and allowed origins to production domain
 - [ ] Switch PayPal from sandbox to live (update `PAYPAL_BASE_URL` + credentials), test with a real small donation
