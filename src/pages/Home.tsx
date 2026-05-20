@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import AnimatedHero from "@/components/site/AnimatedHero";
 import { getPageContent } from "@/lib/cms";
 import { HomePageContent, HomePageCardContent } from "@/lib/types/cms";
@@ -17,10 +17,7 @@ export default function HomePage() {
   if (!content) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading…</p>
-        </div>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }

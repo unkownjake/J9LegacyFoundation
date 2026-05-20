@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Loader2 } from "lucide-react";
 import { getPageContent } from "@/lib/cms";
 import { emptyDonateContent, type DonatePageContent } from "@/lib/types/donate";
 import DonationWorkflow from "@/components/site/DonationWorkflow";
@@ -15,7 +16,7 @@ export default function DonatePage() {
   if (!content) {
     return (
       <div className="flex items-center justify-center min-h-[40vh]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }

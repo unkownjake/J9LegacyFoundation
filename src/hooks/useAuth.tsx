@@ -46,7 +46,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const token = await getToken();
     if (!token) { setIsAdmin(false); setIsAdminLoading(false); return; }
     setIsAdminLoading(true);
-    fetch("/api/me/is-admin", { headers: { Authorization: `Bearer ${token}` } })
+    fetch("/api/admins/me", { headers: { Authorization: `Bearer ${token}` } })
       .then((r) => r.json())
       .then((d) => { setIsAdmin(!!d.isAdmin); setIsAdminLoading(false); })
       .catch(() => { setIsAdmin(false); setIsAdminLoading(false); });

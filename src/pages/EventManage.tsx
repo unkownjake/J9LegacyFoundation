@@ -64,7 +64,7 @@ export default function EventManage() {
       return;
     }
     (async () => {
-      const res = await fetch("/api/event-submission-manage", {
+      const res = await fetch("/api/event-submissions/manage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "get", submissionId: id, magicToken: token }),
@@ -84,7 +84,7 @@ export default function EventManage() {
     if (!id || !token) return;
     setCancelling(true);
     try {
-      const res = await fetch("/api/event-submission-manage", {
+      const res = await fetch("/api/event-submissions/manage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "cancel", submissionId: id, magicToken: token }),

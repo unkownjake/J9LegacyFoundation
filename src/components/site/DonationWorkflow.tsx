@@ -276,7 +276,7 @@ function PaypalCheckoutButton({
         style={{ layout: "vertical", color: "gold", shape: "rect", label: "donate" }}
         disabled={amount <= 0}
         createOrder={async () => {
-          const res = await fetch("/api/paypal-create-order", {
+          const res = await fetch("/api/paypal/create-order", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ amount, feesCovered }),
@@ -289,7 +289,7 @@ function PaypalCheckoutButton({
           return data.id;
         }}
         onApprove={async (data) => {
-          const res = await fetch("/api/paypal-capture-order", {
+          const res = await fetch("/api/paypal/capture-order", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -345,7 +345,7 @@ function ReceiptModal({ initial, onClose }: ReceiptModalProps) {
       return;
     }
     setSubmitting(true);
-    const res = await fetch("/api/donation-receipt", {
+    const res = await fetch("/api/donations/receipt", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
